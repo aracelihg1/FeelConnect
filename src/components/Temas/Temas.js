@@ -10,57 +10,27 @@ const Temas = () => {
         {
           nombre: 'Alegría',
           descripcion: 'Cultiva y mantén emociones positivas en tu vida diaria.',
-          recursos: [
-            {
-              //tipo: 'Video',
-             // titulo: 'Cómo aumentar tu alegría diaria - Psicología Positiva',
-              //url: 'https://www.youtube.com/watch?v=5q4q3tM4-KE'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Esperanza',
           descripcion: 'Construye una mentalidad optimista frente a desafíos.',
-          recursos: [
-            {
-              //tipo: 'Artículo',
-              //titulo: 'El poder terapéutico de la esperanza',
-              //url: 'https://psicologiaymente.com/psicologia/esperanza-salud-mental'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Amor propio',
           descripcion: 'Aprende a desarrollar una relación saludable contigo mismo.',
-          recursos: [
-            {
-              //tipo: 'Guía',
-              //titulo: 'Ejercicios para mejorar tu autoestima',
-              //url: 'https://www.psicoactiva.com/blog/ejercicios-practicos-para-mejorar-la-autoestima/'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Gratitud',
           descripcion: 'Transforma tu perspectiva mediante el agradecimiento.',
-          recursos: [
-            {
-              //tipo: 'Video',
-              //titulo: 'Diario de gratitud en 5 minutos',
-              //url: 'https://www.youtube.com/watch?v=Wb1xNiJjFsc'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Empatía',
           descripcion: 'Desarrolla conexiones más profundas con los demás.',
-          recursos: [
-            {
-             // tipo: 'Artículo',
-             // titulo: 'Ejercicios para mejorar tu empatía',
-             // url: 'https://lamenteesmaravillosa.com/6-ejercicios-para-mejorar-tu-empatia/'
-            }
-          ]
+          recursos: []
         }
       ]
     },
@@ -71,68 +41,32 @@ const Temas = () => {
         {
           nombre: 'Tristeza',
           descripcion: 'Entiende y gestiona este estado emocional natural.',
-          recursos: [
-            {
-              //tipo: 'Video',
-              //titulo: 'Cómo procesar la tristeza saludablemente',
-              //url: 'https://www.youtube.com/watch?v=6W7ALQJb1eY'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Ansiedad',
           descripcion: 'Herramientas para manejar la ansiedad de forma saludable.',
-          recursos: [
-            {
-              //tipo: 'Línea de ayuda',
-              //titulo: 'SAPTEL: 55 5259 8121',
-              //url: 'tel:5552598121'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Ira',
           descripcion: 'Aprende a gestionar el enojo de manera constructiva.',
-          recursos: [
-            {
-              //tipo: 'Artículo',
-              //titulo: 'Control de ira: técnicas efectivas',
-             // url: 'https://www.apa.org/topics/anger/control-es'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Estrés',
           descripcion: 'Técnicas para manejar el estrés en la vida diaria.',
-          recursos: [
-            {
-             // tipo: 'Video',
-             // titulo: 'Reducción de estrés en 5 minutos',
-             // url: 'https://www.youtube.com/watch?v=6vO1wPAmiMQ'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Miedo',
           descripcion: 'Enfrenta tus temores con herramientas profesionales.',
-          recursos: [
-            {
-             // tipo: 'Guía',
-             // titulo: 'Cómo superar miedos irracionales',
-              //url: 'https://www.clinicadeansiedad.com/problemas/miedos-y-fobias/'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Depresión',
           descripcion: 'Recursos para comprender y superar la depresión.',
-          recursos: [
-            {
-              //tipo: 'Línea de ayuda',
-              //titulo: 'Línea de la Vida: 800 911 2000',
-             // url: 'tel:8009112000'
-            }
-          ]
+          recursos: []
         }
       ]
     },
@@ -143,57 +77,27 @@ const Temas = () => {
         {
           nombre: 'Violencia de género',
           descripcion: 'Apoyo y recursos para situaciones de violencia.',
-          recursos: [
-            {
-             // tipo: 'Línea de emergencia',
-              //titulo: 'Atención a víctimas: 800 911 2511',
-              //url: 'tel:8009112511'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Acoso escolar o laboral',
           descripcion: 'Cómo identificar y actuar ante el acoso.',
-          recursos: [
-            {
-              //tipo: 'Guía',
-              //titulo: 'Protocolos contra el acoso',
-              //url: 'https://www.gob.mx/conavim/articulos/protocolo-para-la-atencion-del-acoso-escolar'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Prevención del suicidio',
           descripcion: 'Ayuda profesional en momentos de crisis.',
-          recursos: [
-            {
-              //tipo: 'Línea de ayuda',
-              //titulo: 'Chat de atención emocional UANL',
-            //  url: 'https://www.uanl.mx/atencion/'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Presión social o familiar',
           descripcion: 'Manejo de expectativas y establecimiento de límites.',
-          recursos: [
-            {
-             // tipo: 'Artículo',
-              //titulo: 'Cómo establecer límites saludables',
-              //url: 'https://lamenteesmaravillosa.com/como-establecer-limites-sin-culpa/'
-            }
-          ]
+          recursos: []
         },
         {
           nombre: 'Consumo de sustancias',
           descripcion: 'Información y ayuda profesional sobre adicciones.',
-          recursos: [
-            {
-              //tipo: 'Línea de ayuda',
-             // titulo: 'Centro de atención: 800 911 2000',
-              //url: 'tel:8009112000'
-            }
-          ]
+          recursos: []
         }
       ]
     }

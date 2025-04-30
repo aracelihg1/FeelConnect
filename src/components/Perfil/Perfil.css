@@ -179,7 +179,6 @@ button {
   background-color: #E05555;
 }
 
-/* Responsividad */
 @media (max-width: 480px) {
   .contenido-perfil {
     padding: 1rem;

@@ -10,7 +10,6 @@ const Principal = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [dailyMessage, setDailyMessage] = useState('');
 
-  // Emociones con gradientes
   const emotions = [
     { name: 'Felicidad', emoji: '😊', gradient: 'linear-gradient(135deg, #FFD166 0%, #F6B352 100%)' },
     { name: 'Tristeza', emoji: '😢', gradient: 'linear-gradient(135deg, #6BD5E1 0%, #48B1BF 100%)' },
@@ -20,7 +19,6 @@ const Principal = () => {
     { name: 'Energía', emoji: '⚡', gradient: 'linear-gradient(135deg, #F06595 0%, #FF8FAD 100%)' }
   ];
 
-  // Mensajes inspiradores
   const messages = [
     "Tus emociones son válidas e importantes",
     "Reconocer cómo te sientes es un acto de valentía",
@@ -30,13 +28,11 @@ const Principal = () => {
     "Tu bienestar emocional es una prioridad"
   ];
 
-  // Efecto para mensaje del día
   useEffect(() => {
     const today = new Date().getDate();
     setDailyMessage(messages[today % messages.length]);
   }, []);
 
-  // Guardar registro emocional con confirmación
   const handleSaveEntry = () => {
     if (!selectedEmotion) return;
 
@@ -76,7 +72,6 @@ const Principal = () => {
     });
   };
 
-  // Renderizar calendario
   const renderCalendar = () => {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -86,12 +81,10 @@ const Principal = () => {
     const days = [];
     const today = new Date();
     
-    // Días vacíos al inicio
     for (let i = 0; i < firstDayOfMonth; i++) {
       days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>);
     }
     
-    // Días del mes
     for (let day = 1; day <= daysInMonth; day++) {
       const dateStr = `${year}-${month + 1}-${day}`;
       const hasEntry = savedEntries.some(entry => entry.date === dateStr);
@@ -113,7 +106,6 @@ const Principal = () => {
     return days;
   };
 
-  // Selector de nivel emocional
   const EmotionLevelSelector = () => (
     <div className="level-selector">
       <p>Intensidad: {currentLevel}/5</p>
@@ -139,7 +131,6 @@ const Principal = () => {
         <h1 className="welcome-title">Registro Emocional</h1>
         
         <div className="dashboard-container">
-          {/* Panel izquierdo - Calendario */}
           <div className="calendar-panel">
             <div className="calendar-header">
               <button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))}>
@@ -172,7 +163,6 @@ const Principal = () => {
             </div>
           </div>
           
-          {/* Panel derecho - Registro emocional */}
           <div className="emotion-panel">
             <div className="principal-card">
               <div className="daily-affirmation">

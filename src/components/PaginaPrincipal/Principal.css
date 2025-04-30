@@ -10,7 +10,6 @@
   --shadow: 0 4px 12px rgba(90, 74, 66, 0.1);
 }
 
-/* Reset y estructura base */
 html, body, #root {
   height: 100%;
   margin: 0;
@@ -108,7 +107,6 @@ html, body, #root {
   right: 10px;
 }
 
-/* Selector de emociones */
 .emotion-selector {
   display: flex;
   flex-wrap: wrap;
@@ -142,7 +140,6 @@ html, body, #root {
   box-shadow: 0 0 0 3px var(--light);
 }
 
-/* Selector de intensidad */
 .level-selector {
   margin: 1.5rem 0;
   text-align: center;
@@ -176,7 +173,6 @@ html, body, #root {
   opacity: 1 !important;
 }
 
-/* Diario emocional */
 .journal-section {
   margin: 1.5rem 0;
 }
@@ -217,7 +213,6 @@ html, body, #root {
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-/* Calendario */
 .calendar-panel {
   background: var(--bg-card);
   border-radius: 20px;
@@ -326,7 +321,6 @@ html, body, #root {
   gap: 0.5rem;
 }
 
-/* Responsividad */
 @media (max-width: 900px) {
   .dashboard-container {
     flex-direction: column;
