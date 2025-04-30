@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+  --primary-color: #A78B7D; 
+  --secondary-color: #D4B8A7; 
+  --accent-color: #E8B4B8; 
+  --dark-accent: #C97B84;
+  --text-color: #5A4A42; 
+  --light-text: #F8F1E9;
+  --bg-blur: rgba(248, 241, 233, 0.7); 
+  --box-shadow: 0 8px 32px rgba(90, 74, 66, 0.1);
+  --warm-gray: #D9CEC4; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  overflow: hidden;
+  height: 100vh;
+}
+
+.login-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #F3E9E0 0%, #E8D5C5 100%);
+}
+
+.background-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.moving-element {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23A78B7D" opacity="0.08"><path d="M30,50 Q50,20 70,50 Q90,70 50,90 Q10,70 30,50" /></svg>') no-repeat center center;
+  background-size: contain;
+  z-index: 0;
+}
+
+.login-box {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 400px;
+  padding: 2.5rem;
+  background: var(--bg-blur);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--warm-gray);
+  animation: fadeIn 1s ease-in-out;
+  transition: all 0.3s ease;
+}
+
+.login-box.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo-icon {
+  font-size: 3.5rem;
+  color: var(--dark-accent);
+  margin-bottom: 0.5rem;
+  animation: pulse 2s infinite;
+}
+
+.logo-text {
+  font-family: 'Winky Rough', cursive;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  margin: 0;
+}
+
+.slogan {
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.login-input {
+  width: 100%;
+  padding: 15px 15px 15px 45px;
+  border: 1px solid var(--warm-gray);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(90, 74, 66, 0.05);
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(168, 123, 125, 0.15);
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-button {
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, var(--primary-color), var(--dark-accent));
+  color: var(--light-text);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(168, 123, 125, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(168, 123, 125, 0.35);
+  background: linear-gradient(135deg, var(--dark-accent), var(--primary-color));
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+.login-button.loading {
+  background: linear-gradient(135deg, var(--primary-color), var(--dark-accent));
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(248, 241, 233, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--light-text);
+  animation: spin 1s ease-in-out infinite;
+}
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.link:hover {
+  color: var(--dark-accent);
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-8px);
+  }
+  40%, 80% {
+    transform: translateX(8px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    color: var(--accent-color);
+  }
+  50% {
+    transform: scale(1.1);
+    color: var(--dark-accent);
+  }
+  100% {
+    transform: scale(1);
+    color: var(--accent-color);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.moving-element {
+  transition: all 15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+@media (max-width: 768px) {
+  .login-box {
+    padding: 2rem 1.5rem;
+    width: 95%;
+    border-radius: 12px;
+  }
+  
+  .logo-text {
+    font-size: 2rem;
+  }
+  
+  .logo-icon {
+    font-size: 3rem;
+  }
+  
+  .login-input {
+    padding: 12px 12px 12px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .links-container {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .logo-text {
+    font-size: 1.8rem;
+  }
+  
+  .slogan {
+    font-size: 0.9rem;
+  }
+}

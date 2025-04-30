@@ -1,0 +1,36 @@
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+    background-color: #F9F5F2;
+  }
+  
+  .menu-open {
+    margin-left: 280px;
+  }
+  
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #A78B7D;
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-open {
+      margin-left: 0;
+    }
+    
+    .menu-toggle {
+      display: block;
+    }
+  }

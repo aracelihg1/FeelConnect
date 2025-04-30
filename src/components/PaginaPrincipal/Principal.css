@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Winky+Rough:wght@400;600&display=swap');
+
+:root {
+  --primary: #5A4A42;
+  --secondary: #A78B7D;
+  --accent: #C97B84;
+  --light: #F8F1E9;
+  --bg-card: #FFFFFF;
+  --warm-gray: #D9CEC4;
+  --shadow: 0 4px 12px rgba(90, 74, 66, 0.1);
+}
+
+/* Reset y estructura base */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #F3E9E0 0%, #E8D5C5 100%);
+  color: var(--primary);
+}
+
+.contenido-principal {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Estructura del dashboard */
+.dashboard-container {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+}
+
+.calendar-panel {
+  flex: 1;
+  min-width: 350px;
+}
+
+.emotion-panel {
+  flex: 1;
+  min-width: 350px;
+}
+
+/* Títulos */
+.welcome-title {
+  font-family: 'Winky Rough', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--primary);
+  text-shadow: 1px 1px 2px rgba(90, 74, 66, 0.1);
+}
+
+/* Tarjeta principal */
+.principal-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mensaje del día */
+.daily-affirmation {
+  background: rgba(168, 139, 125, 0.1);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  font-size: 1.1rem;
+  text-align: center;
+  position: relative;
+}
+
+.daily-affirmation::before,
+.daily-affirmation::after {
+  content: '"';
+  font-size: 2rem;
+  color: var(--accent);
+  position: absolute;
+  opacity: 0.3;
+}
+
+.daily-affirmation::before {
+  top: 5px;
+  left: 10px;
+}
+
+.daily-affirmation::after {
+  bottom: -15px;
+  right: 10px;
+}
+
+/* Selector de emociones */
+.emotion-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.emotion-btn {
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.emotion-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.emotion-btn.selected {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px var(--light);
+}
+
+/* Selector de intensidad */
+.level-selector {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.level-selector p {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.level-bars {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 30px;
+  align-items: flex-end;
+}
+
+.level-bar {
+  width: 30px;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.level-bar:hover {
+  transform: translateY(-3px);
+}
+
+.level-bar.active {
+  opacity: 1 !important;
+}
+
+/* Diario emocional */
+.journal-section {
+  margin: 1.5rem 0;
+}
+
+.journal-input {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 2px solid var(--warm-gray);
+  font-family: 'Inter', sans-serif;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+.journal-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(201, 123, 132, 0.2);
+}
+
+.save-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.save-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Calendario */
+.calendar-panel {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  height: fit-content;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.calendar-header button:hover {
+  background: var(--light);
+}
+
+.calendar-header h3 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-weekday {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--secondary);
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.calendar-day {
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calendar-day:hover {
+  background: var(--light);
+}
+
+.calendar-day.today {
+  font-weight: 700;
+}
+
+.checkmark {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+}
+
+.today-marker {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.calendar-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Responsividad */
+@media (max-width: 900px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  
+  .calendar-panel, .emotion-panel {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding: 1rem;
+  }
+  
+  .welcome-title {
+    font-size: 2rem;
+  }
+  
+  .principal-card, .calendar-panel {
+    padding: 1.5rem;
+  }
+  
+  .emotion-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .calendar-day {
+    height: 35px;
+    font-size: 0.9rem;
+  }
+}
