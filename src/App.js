@@ -9,6 +9,7 @@ import Nosotros from './components/Nosotros/Nosotros';
 import Temas from './components/Temas/Temas';
 import Foros from './components/Foros/Foros';
 import LineaAyuda from './components/LineaAyuda/LineaAyuda';
+import Estadisticas from './components/Estadisticas/Estadisticas';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -46,6 +47,7 @@ function App() {
           <Route path="configuracion" element={<Configuracion />} />
           <Route path="nosotros" element={<Nosotros />} />
           <Route path="temas" element={<Temas />} />
+          <Route path="estadisticas" element={<Estadisticas />} /> 
           <Route path="foros" element={<Foros />} />
           <Route path="linea-ayuda" element={<LineaAyuda />} />
           <Route index element={<Navigate to="/pagina-principal" replace />} />

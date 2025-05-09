@@ -24,7 +24,6 @@ const Nosotros = () => {
           </div>
           
           <div className="info-grid">
-            {/* Primera fila */}
             <div className="info-card">
               <div className="slide-icon">👁️</div>
               <h3>Visión</h3>
@@ -37,7 +36,6 @@ const Nosotros = () => {
               <p>Durante los siguientes 2 años buscamos consolidarnos como la plataforma de referencia en la expresión emocional anónima.</p>
             </div>
 
-            {/* Segunda fila */}
             <div className="info-card">
               <div className="slide-icon">💡</div>
               <h3>Filosofía</h3>

@@ -1,0 +1,21 @@
+.estadisticas-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--primary);
+}
+
+.titulo-estadisticas {
+    font-family: 'Winky Rough', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .titulo-estadisticas {
+        font-size: 2rem;
+    }
+}
