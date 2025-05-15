@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Perfil.css';
 import Swal from 'sweetalert2';
 
@@ -6,14 +6,38 @@ const Perfil = () => {
   const [editMode, setEditMode] = useState(false);
   const [profile, setProfile] = useState({
     nombre: '',
-    apellidos: '',
+    apePat: '',
     edad: '',
     sexo: '',
-    email: 'correo@ejemplo.com',
-    avatar: null
+    correo: '',
+    alias: '',
+    avatar: null,
+    contrasenia: ''  // Añadido el campo para la contraseña
   });
-  
+
   const fileInputRef = useRef(null);
+
+  // Cargar perfil al montar componente
+  useEffect(() => {
+    const idUsuario = localStorage.getItem('usuarioId');
+    if (!idUsuario) return;
+
+    fetch(`http://localhost:8080/Usuario/${idUsuario}`)
+      .then(res => res.json())
+      .then(data => {
+        setProfile({
+          nombre: data.nombre || '',
+          apePat: data.apePat || '',
+          edad: data.edad || '',
+          sexo: data.sexo || '',
+          correo: data.correo || '',
+          alias: data.alias || '',
+          avatar: data.avatar || null,
+          contrasenia: data.contrasenia || ''  // No pre-cargar la contraseña
+        });
+      })
+      .catch(err => console.error('Error al obtener el perfil:', err));
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +73,9 @@ const Perfil = () => {
   };
 
   const handleSave = () => {
+    const idUsuario = localStorage.getItem('usuarioId');
+    if (!idUsuario) return;
+
     Swal.fire({
       title: '¿Guardar cambios?',
       text: 'Se actualizará tu información de perfil',
@@ -60,12 +87,33 @@ const Perfil = () => {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        setEditMode(false);
-        Swal.fire({
-          title: '¡Cambios guardados!',
-          icon: 'success',
-          confirmButtonColor: '#A78B7D'
-        });
+        fetch(`http://localhost:8080/Usuario/${idUsuario}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(profile)
+        })
+          .then(response => {
+            if (response.ok) {
+              Swal.fire({
+                title: '¡Cambios guardados!',
+                icon: 'success',
+                confirmButtonColor: '#A78B7D'
+              });
+              setEditMode(false);
+            } else {
+              throw new Error("Error en la actualización");
+            }
+          })
+          .catch(err => {
+            Swal.fire({
+              title: 'Error',
+              text: 'No se pudo actualizar el perfil.',
+              icon: 'error',
+              confirmButtonColor: '#d33'
+            });
+          });
       }
     });
   };
@@ -131,7 +179,7 @@ const Perfil = () => {
               <input
                 type="text"
                 name="apellidos"
-                value={profile.apellidos}
+                value={profile.apePat}
                 onChange={handleInputChange}
               />
             </div>
@@ -168,11 +216,31 @@ const Perfil = () => {
               <input
                 type="email"
                 name="email"
-                value={profile.email}
+                value={profile.correo}
                 onChange={handleInputChange}
               />
             </div>
-            
+
+            <div className="form-group">
+              <label>Alias</label>
+              <input
+                type="text"
+                name="alias"
+                value={profile.alias}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Contraseña</label>
+              <input
+                type="contrasenia"
+                name="contrasenia"
+                value={profile.contrasenia}
+                onChange={handleInputChange}
+              />
+            </div>
+
             <div className="form-actions">
               <button 
                 className="btn-cancel"
@@ -190,10 +258,11 @@ const Perfil = () => {
           </div>
         ) : (
           <div className="profile-info">
-            <h2>{profile.nombre} {profile.apellidos}</h2>
-            <p>{profile.email}</p>
+            <h2>{profile.nombre} {profile.apePat}</h2>
+            <p>{profile.correo}</p>
             {profile.edad && <p>{profile.edad} años</p>}
             {profile.sexo && <p>{profile.sexo}</p>}
+            <p>{profile.alias}</p> {/* Mostrar el alias */}
             
             <button 
               className="btn-edit"

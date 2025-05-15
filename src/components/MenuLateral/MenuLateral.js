@@ -2,7 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   FiX, FiHome, FiUser, FiUsers, FiBook, 
-  FiMessageSquare, FiLifeBuoy, FiCreditCard , FiLogOut, FiBarChart2
+  FiMessageSquare, FiLifeBuoy, FiCreditCard, 
+  FiLogOut, FiBarChart2, FiEye 
 } from 'react-icons/fi';
 import Swal from 'sweetalert2';
 import './MenuLateral.css';
@@ -17,9 +18,9 @@ const MenuLateral = ({ isOpen, onClose, onLogout }) => {
     { icon: <FiBarChart2 />, text: 'Estadísticas', path: '/estadisticas' },
     { icon: <FiMessageSquare />, text: 'Foros', path: '/foros' },
     { icon: <FiLifeBuoy />, text: 'Línea de ayuda', path: '/linea-ayuda' },
-    { icon: <FiCreditCard  />, text: 'Pagos', path: '/configuracion' },
+    { icon: <FiCreditCard />, text: 'Pagos', path: '/configuracion' },
+    { icon: <FiEye />, text: 'Visión Artificial', path: '/vision' }, // 👈 corregido aquí
     { icon: <FiUsers />, text: 'Nosotros', path: '/nosotros' },
-
   ];
 
   const handleLogout = () => {

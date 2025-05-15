@@ -1,5 +1,7 @@
+// ...imports
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 import './Principal.css';
 
 const Principal = () => {
@@ -9,6 +11,7 @@ const Principal = () => {
   const [savedEntries, setSavedEntries] = useState([]);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [dailyMessage, setDailyMessage] = useState('');
+  const navigate = useNavigate();
 
   const emotions = [
     { name: 'Felicidad', emoji: '😊', gradient: 'linear-gradient(135deg, #FFD166 0%, #F6B352 100%)' },
@@ -29,12 +32,19 @@ const Principal = () => {
   ];
 
   useEffect(() => {
-    const today = new Date().getDate();
-    setDailyMessage(messages[today % messages.length]);
-  }, []);
+    const idUsuario = localStorage.getItem('usuarioId');
+    const aliasUsuario = localStorage.getItem('usuarioAlias');
+    if (!idUsuario || !aliasUsuario) navigate('/login');
+  }, [navigate]);
 
-  const handleSaveEntry = () => {
+  const formatDate = (date) => date.toISOString().split('T')[0];
+
+  const handleSaveEntry = async () => {
     if (!selectedEmotion) return;
+
+    const usuarioId = localStorage.getItem('usuarioId');
+    const alias = localStorage.getItem('usuarioAlias');
+    const fecha = formatDate(new Date());
 
     Swal.fire({
       title: '¿Guardar registro?',
@@ -47,27 +57,59 @@ const Principal = () => {
       cancelButtonText: 'Cancelar',
       background: '#F8F1E9',
       color: '#5A4A42'
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        const newEntry = {
-          emotion: selectedEmotion,
-          level: currentLevel,
-          journal: journalEntry,
-          date: currentDate.toISOString().split('T')[0]
+        const diario = {
+          emocion: selectedEmotion.name,
+          descripcion: journalEntry,
+          intensidad: currentLevel,
+          idUsuario: usuarioId,
+          fecha: fecha
         };
 
-        setSavedEntries([...savedEntries, newEntry]);
-        setJournalEntry('');
-        setSelectedEmotion(null);
-        setCurrentLevel(3);
+        try {
+          const response = await fetch('http://localhost:8080/Diario', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(diario),
+          });
 
-        Swal.fire({
-          title: '¡Registro guardado!',
-          icon: 'success',
-          confirmButtonColor: '#A78B7D',
-          background: '#F8F1E9',
-          color: '#5A4A42'
-        });
+          if (response.ok) {
+            setSavedEntries([...savedEntries, diario]);
+            setJournalEntry('');
+            setSelectedEmotion(null);
+            setCurrentLevel(3);
+
+            Swal.fire({
+              title: '¡Registro guardado!',
+              text: `Se guardó tu registro con éxito. Alias: ${alias}`,
+              icon: 'success',
+              confirmButtonColor: '#A78B7D',
+              background: '#F8F1E9',
+              color: '#5A4A42'
+            });
+          } else {
+            Swal.fire({
+              title: 'Error al guardar',
+              text: 'Hubo un problema al guardar tu registro.',
+              icon: 'error',
+              confirmButtonColor: '#d33',
+              background: '#F8F1E9',
+              color: '#5A4A42'
+            });
+          }
+        } catch (error) {
+          Swal.fire({
+            title: 'Error de conexión',
+            text: 'No se pudo conectar con el servidor.',
+            icon: 'error',
+            confirmButtonColor: '#d33',
+            background: '#F8F1E9',
+            color: '#5A4A42'
+          });
+        }
       }
     });
   };
@@ -77,19 +119,18 @@ const Principal = () => {
     const month = currentDate.getMonth();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const firstDayOfMonth = new Date(year, month, 1).getDay();
-    
     const days = [];
     const today = new Date();
-    
+
     for (let i = 0; i < firstDayOfMonth; i++) {
       days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>);
     }
-    
+
     for (let day = 1; day <= daysInMonth; day++) {
-      const dateStr = `${year}-${month + 1}-${day}`;
-      const hasEntry = savedEntries.some(entry => entry.date === dateStr);
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const hasEntry = savedEntries.some(entry => entry.fecha === dateStr);
       const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
-      
+
       days.push(
         <div 
           key={`day-${day}`} 
@@ -102,7 +143,7 @@ const Principal = () => {
         </div>
       );
     }
-    
+
     return days;
   };
 
@@ -129,9 +170,9 @@ const Principal = () => {
     <div className="contenido-principal">
       <div className="content-wrapper">
         <h1 className="welcome-title">Registro Emocional</h1>
-        
         <div className="dashboard-container">
           <div className="calendar-panel">
+            {/* Header y calendario */}
             <div className="calendar-header">
               <button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))}>
                 &lt;
@@ -143,34 +184,22 @@ const Principal = () => {
                 &gt;
               </button>
             </div>
-            
             <div className="calendar-grid">
               {['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'].map(day => (
                 <div key={day} className="calendar-weekday">{day}</div>
               ))}
               {renderCalendar()}
             </div>
-            
             <div className="calendar-legend">
-              <div className="legend-item">
-                <div className="checkmark">✓</div>
-                <span>Día registrado</span>
-              </div>
-              <div className="legend-item">
-                <div className="today-marker"></div>
-                <span>Hoy</span>
-              </div>
+              <div className="legend-item"><div className="checkmark">✓</div><span>Día registrado</span></div>
+              <div className="legend-item"><div className="today-marker"></div><span>Hoy</span></div>
             </div>
           </div>
-          
+
           <div className="emotion-panel">
             <div className="principal-card">
-              <div className="daily-affirmation">
-                <p>"{dailyMessage}"</p>
-              </div>
-              
+              <div className="daily-affirmation"><p>"{dailyMessage}"</p></div>
               <h2 className="question-text">¿Cómo te sientes hoy?</h2>
-              
               <div className="emotion-selector">
                 {emotions.map((emotion) => (
                   <button
@@ -183,11 +212,10 @@ const Principal = () => {
                   </button>
                 ))}
               </div>
-              
+
               {selectedEmotion && (
                 <>
                   <EmotionLevelSelector />
-                  
                   <div className="journal-section">
                     <textarea
                       value={journalEntry}
@@ -195,7 +223,6 @@ const Principal = () => {
                       placeholder={`Describe qué te hace sentir ${selectedEmotion.name.toLowerCase()}...`}
                       className="journal-input"
                     />
-                    
                     <button 
                       onClick={handleSaveEntry}
                       className="save-button"
