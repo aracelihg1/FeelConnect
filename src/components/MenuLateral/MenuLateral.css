@@ -1,3 +1,22 @@
+/*
+  Nombre del programa:
+  FeelConnect - Estilos para el Componente MenuLateral
+
+  ¿Para qué sirve este archivo?
+  Define los estilos para el menú lateral de navegación, incluyendo
+  apariencia, estados activos, responsividad y estilos para la librería SweetAlert2.
+
+  Autores:
+  Kelly Estefany Hernández Bandala  
+  Araceli Hernández García
+
+  Fecha de creación:
+  29/04/2025
+
+  Fecha de entrega:
+  16/05/2025
+*/
+
 .swal2-confirm {
   background-color: #E8B4B8 !important; 
   border: none !important;

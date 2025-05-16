@@ -1,3 +1,23 @@
+/*
+Nombre del programa:
+FeelConnect - Estilos de Línea de Ayuda Psicológica
+
+¿Para qué sirve este archivo?
+Define el estilo visual de la sección de Líneas de Ayuda Psicológica, incluyendo la tipografía, 
+colores, diseño de tarjetas para cada centro de ayuda, y una disposición responsiva para garantizar 
+que la información se visualice de manera clara y accesible en cualquier dispositivo.
+
+Autores:
+Kelly Estefany Hernández Bandala  
+Araceli Hernández García
+
+Fecha de creación:
+29/04/2025
+
+Fecha de entrega:
+16/05/2025
+*/
+
 import React from 'react';
 import './LineaAyuda.css';
 

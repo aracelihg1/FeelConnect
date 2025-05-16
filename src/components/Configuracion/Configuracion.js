@@ -1,3 +1,23 @@
+/*
+Nombre del programa:
+FeelConnect - Configuración de Suscripción
+
+¿Para qué sirve el programa?
+La pantalla de configuración que permite a los usuarios elegir un plan de suscripción 
+para eliminar anuncios, introducir datos de pago y completar el proceso de compra. 
+Simula procesamiento de pago y confirma la adquisición del plan.
+
+Autores:
+Kelly Estefany Hernández Bandala  
+Araceli Hernández García
+
+Fecha de creación:
+10/05/2025
+
+Fecha de entrega:
+16/05/2025
+*/
+
 import React, { useState } from 'react';
 import './Configuracion.css';
 import Swal from 'sweetalert2';
@@ -13,24 +33,24 @@ const Configuracion = () => {
   const plans = [
     {
       id: 1,
-      name: "Mensual",
-      price: "$4.99",
+      name: "Semanal",
+      price: "$100",
       description: "Pago recurrente mensual",
       savings: "",
       highlight: false
     },
     {
       id: 2,
-      name: "Anual",
-      price: "$49.99",
+      name: "Mensual",
+      price: "500",
       description: "Pago anual (2 meses gratis)",
       savings: "Ahorras $10 vs mensual",
       highlight: true
     },
     {
       id: 3,
-      name: "Vitalicio",
-      price: "$99.99",
+      name: "Anual",
+      price: "$2000",
       description: "Un solo pago para siempre",
       savings: "Mejor relación calidad-precio",
       highlight: false

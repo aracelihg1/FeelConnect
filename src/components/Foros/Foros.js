@@ -1,3 +1,23 @@
+/*
+Nombre del programa:
+FeelConnect - Componente de Foros
+
+¿Para qué sirve este archivo?
+Este componente permite a los usuarios compartir experiencias emocionales
+de forma anónima, reaccionar con emojis y responder a otros mensajes.
+Fomenta un espacio seguro de apoyo emocional dentro de la comunidad.
+
+Autores:
+Kelly Estefany Hernández Bandala  
+Araceli Hernández García
+
+Fecha de creación:
+29/04/2025
+
+Fecha de entrega:
+16/05/2025
+*/
+
 import React, { useState } from 'react';
 import './Foros.css';
 
@@ -305,7 +325,7 @@ const Foros = () => {
                     className="btn-publicar"
                   >
                     <span className="icono-publicar">✉️</span> Responder
-                  </button>
+                 </button>
                 </div>
               </div>
             )}

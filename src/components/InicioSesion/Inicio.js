@@ -1,7 +1,29 @@
+/*
+Nombre del programa:
+FeelConnect - Sistema de Autenticación
+
+¿Para qué sirve el programa?:
+Sistema de inicio de sesión que valida credenciales de usuarios 
+mediante conexión a backend, con almacenamiento seguro de tokens
+y redirección a pantalla principal.
+
+Autores:
+Kelly Estefany Hernández Bandala
+Araceli Hernández García
+
+Fecha de creación: 
+29/04/2025
+
+Fecha de entrega:
+16/05/2025
+*/
+
 import React, { useState, useEffect } from 'react';
 import './Inicio.css';
 import { FiUser, FiLock, FiHeart, FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate, Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 
 const Inicio = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -32,22 +54,34 @@ const Inicio = ({ onLogin }) => {
 
       if (response.ok) {
         const result = await response.json();
-        console.log('Resultado del login:', result); // Verifica la estructura del objeto recibido
+        console.log('Resultado del login:', result); 
 
-        // Cambia 'result.id' por 'result.idUsuario' y 'result.alias' por 'result.alias'
-        localStorage.setItem('usuarioId', result.idUsuario); // Guardar el idUsuario
-        localStorage.setItem('usuarioAlias', result.alias); // Guardar el alias
+        localStorage.setItem('usuarioId', result.idUsuario);
+        localStorage.setItem('usuarioAlias', result.alias); 
 
-        onLogin();
+            onLogin();
         navigate('/Principal', { replace: true });
       } else {
-        const errorMessage = await response.text();
-        alert(errorMessage);
+        Swal.fire({
+          title: 'Error',
+          text: 'Correo electrónico o contraseña inválidos',
+          icon: 'error',
+          confirmButtonColor: '#A78B7D',
+          background: '#F8F1E9',
+          color: '#5A4A42'
+        });
         setShake(true);
         setTimeout(() => setShake(false), 500);
       }
     } catch (error) {
-      alert('Error al conectar con el servidor');
+      Swal.fire({
+        title: 'Error de conexión',
+        text: 'No se pudo conectar con el servidor',
+        icon: 'error',
+        confirmButtonColor: '#A78B7D',
+        background: '#F8F1E9',
+        color: '#5A4A42'
+      });
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -138,9 +172,7 @@ const Inicio = ({ onLogin }) => {
         </form>
 
         <div className="links-container">
-          <button className="link" onClick={() => alert('Funcionalidad pendiente')}>
-            ¿Olvidaste tu contraseña?
-          </button>
+          
           <Link to="/registro" className="link">Regístrate</Link>
         </div>
       </div>

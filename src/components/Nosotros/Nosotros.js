@@ -1,3 +1,23 @@
+/*
+Nombre del programa:
+FeelConnect - Sección Nosotros
+
+¿Para qué sirve este archivo?
+Establece la estructura y el estilo visual de la sección "Nosotros" en la plataforma FeelConnect. 
+Incluye información sobre el equipo de trabajo, misión, visión, valores, ubicación y redes sociales 
+de la empresa.
+
+Autores:
+Kelly Estefany Hernández Bandala  
+Araceli Hernández García
+
+Fecha de creación:
+29/04/2025
+
+Fecha de entrega:
+16/05/2025
+*/
+
 import React from 'react';
 import { 
   FaFacebook, 

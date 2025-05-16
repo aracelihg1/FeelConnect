@@ -1,3 +1,24 @@
+/*
+Nombre del programa:
+FeelConnect - Estilos de la Interfaz Principal
+
+¿Para qué sirve este archivo?
+Establece el diseño visual principal de la aplicación , incluyendo el panel emocional,
+el diario de emociones, el selector de niveles y el calendario interactivo. Utiliza una paleta de tonos cálidos,
+sombras suaves y tipografía armónica para fomentar una experiencia emocionalmente reconfortante y amigable.
+
+Autores:
+Kelly Estefany Hernández Bandala  
+Araceli Hernández García
+
+Fecha de creación:
+29/04/2025
+
+Fecha de entrega:
+16/05/2025
+*/
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Winky+Rough:wght@400;600&display=swap');
 
 :root {
@@ -38,7 +59,6 @@ html, body, #root {
   overflow-y: auto;
 }
 
-/* Estructura del dashboard */
 .dashboard-container {
   display: flex;
   gap: 2rem;

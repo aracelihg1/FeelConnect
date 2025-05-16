@@ -1,4 +1,22 @@
-/* TEMAS.CSS */
+/*
+  Nombre del programa:
+  FeelConnect - Estilos para el componente Temas de Apoyo Emocional
+
+  ¿Para qué sirve este archivo?
+  Define los estilos para mostrar las categorías de temas emocionales,
+  sus descripciones y recursos, asegurando una experiencia visual clara y agradable.
+
+  Autores:
+  Kelly Estefany Hernández Bandala  
+  Araceli Hernández García
+
+  Fecha de creación:
+  29/04/2025
+
+  Fecha de entrega:
+  16/05/2025
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Winky+Rough&display=swap');
 

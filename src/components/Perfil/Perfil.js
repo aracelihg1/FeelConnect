@@ -1,3 +1,23 @@
+/*
+  Nombre del programa:
+  FeelConnect - Perfil de Usuario
+
+  ¿Para qué sirve este archivo?
+  Permite visualizar y editar la información personal del usuario, como nombre,
+  apellidos, edad, sexo, correo, alias, contraseña y foto de perfil.
+
+  Autores:
+  Kelly Estefany Hernández Bandala  
+  Araceli Hernández García
+
+  Fecha de creación:
+  29/04/2025
+
+  Fecha de entrega:
+  16/05/2025
+*/
+
+
 import React, { useState, useEffect, useRef } from 'react';
 import './Perfil.css';
 import Swal from 'sweetalert2';

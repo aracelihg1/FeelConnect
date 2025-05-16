@@ -1,3 +1,22 @@
+/*
+  Nombre del programa:
+  FeelConnect - Componente MenuLateral
+
+  ¿Para qué sirve este archivo?
+  Proporciona un menú lateral de navegación con enlaces a las diferentes
+  secciones de la aplicación, manejo del estado activo y funcionalidad de cierre de sesión.
+
+  Autores:
+  Kelly Estefany Hernández Bandala  
+  Araceli Hernández García
+
+  Fecha de creación:
+  29/04/2025
+
+  Fecha de entrega:
+  16/05/2025
+*/
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 

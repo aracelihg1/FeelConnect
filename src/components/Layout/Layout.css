@@ -1,3 +1,22 @@
+/*
+  Nombre del programa:
+  FeelConnect - Estilos para el Componente Layout Principal
+
+  ¿Para qué sirve este archivo?
+  Define el diseño y comportamiento responsivo del contenedor principal y área de contenido,
+  incluyendo la visibilidad y transición del menú lateral en diferentes tamaños de pantalla.
+
+  Autores:
+  Kelly Estefany Hernández Bandala  
+  Araceli Hernández García
+
+  Fecha de creación:
+  29/04/2025
+
+  Fecha de entrega:
+  16/05/2025
+*/
+
 .layout-container {
     display: flex;
     min-height: 100vh;

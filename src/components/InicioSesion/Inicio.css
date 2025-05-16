@@ -1,3 +1,24 @@
+/*
+Nombre del programa:
+FeelConnect - Estilos de Interfaz de Autenticación
+
+¿Para qué sirve el programa?
+Archivo CSS que define el diseño visual del sistema de login,
+incluyendo animaciones, efectos de transición y diseño responsivo
+para la interfaz de autenticación de FeelConnect.
+
+Autores:
+Kelly Estefany Hernández Bandala
+Araceli Hernández García
+
+Fecha de creación: 
+29/04/2025
+
+Fecha de entrega:
+16/05/2025
+*/
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
 
 :root {

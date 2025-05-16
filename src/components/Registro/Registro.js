@@ -1,3 +1,22 @@
+/*
+  Nombre del programa:
+  FeelConnect - Componente de Registro de Usuario
+
+  ¿Para qué sirve este archivo?
+  Permite registrar nuevos usuarios validando campos, mostrando mensajes de éxito o error,
+  y enviando los datos al servidor para crear una cuenta.
+
+  Autores:
+  Kelly Estefany Hernández Bandala  
+  Araceli Hernández García
+
+  Fecha de creación:
+  29/04/2025
+
+  Fecha de entrega:
+  16/05/2025
+*/
+
 import React, { useState } from 'react';
 import './Registro.css';
 import { FiUser, FiLock, FiMail, FiEye, FiEyeOff } from 'react-icons/fi';
