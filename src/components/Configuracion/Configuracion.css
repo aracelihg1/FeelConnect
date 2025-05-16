@@ -19,9 +19,11 @@ Fecha de entrega:
 */
 
 
+/* Importación de fuentes desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Winky+Rough&display=swap');
 
+/* Variables de color para mantener un diseño coherente */
 :root {
   --primary: #C97B84;
   --secondary: #A78B7D;
@@ -31,6 +33,7 @@ Fecha de entrega:
   --text: #5A4A42;
 }
 
+/* Contenedor principal */
 .contenido-configuracion {
     max-width: 600px;
     margin: 0 auto;
@@ -39,6 +42,7 @@ Fecha de entrega:
     color: var(--text);
 }
 
+/* Título principal del componente */
 .contenido-configuracion h1 {
     font-family: 'Winky Rough', cursive;
     color: var(--primary);
@@ -47,6 +51,7 @@ Fecha de entrega:
     text-align: center;
 }
 
+/* Tarjetas contenedoras de planes o pago */
 .configuracion-card, .payment-card {
     background: var(--white);
     border-radius: 12px;
@@ -55,6 +60,7 @@ Fecha de entrega:
     margin: 0 auto;
 }
 
+/* Títulos internos de tarjetas */
 .configuracion-card h2, .payment-card h2 {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
@@ -62,6 +68,7 @@ Fecha de entrega:
     text-align: center;
 }
 
+/* Subtítulo que acompaña la selección de plan */
 .plan-subtitle {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -69,12 +76,14 @@ Fecha de entrega:
     font-size: 0.9rem;
 }
 
+/* Contenedor que apila los planes verticalmente */
 .plans-container-vertical {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
+/* Estilo base para cada plan */
 .plan-card {
     background: var(--white);
     border-radius: 10px;
@@ -89,16 +98,19 @@ Fecha de entrega:
     flex-direction: column;
 }
 
+/* Estilo extra para plan destacado */
 .highlight-plan {
     border: 2px solid var(--primary);
     box-shadow: 0 4px 15px rgba(201, 123, 132, 0.2);
 }
 
+/* Efecto hover en los planes */
 .plan-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(201, 123, 132, 0.15);
 }
 
+/* Insignia "POPULAR" para planes destacados */
 .popular-badge {
     position: absolute;
     top: -10px;
@@ -111,12 +123,14 @@ Fecha de entrega:
     font-weight: 600;
 }
 
+/* Título del plan */
 .plan-card h3 {
     color: var(--primary);
     font-size: 1.1rem;
     margin: 0.3rem 0;
 }
 
+/* Precio del plan */
 .plan-price {
     font-size: 1.5rem;
     font-weight: 700;
@@ -124,6 +138,7 @@ Fecha de entrega:
     margin: 0.3rem 0;
 }
 
+/* Descripción corta del plan */
 .plan-desc {
     font-size: 0.9rem;
     color: var(--text);
@@ -131,6 +146,8 @@ Fecha de entrega:
     line-height: 1.4;
 }
 
+
+/* Texto de ahorro adicional */
 .plan-savings {
     font-size: 0.8rem;
     color: var(--primary);
@@ -138,6 +155,7 @@ Fecha de entrega:
     margin: 0.5rem 0;
 }
 
+/* Botón para seleccionar un plan */
 .select-plan-btn {
     background-color: var(--primary);
     color: white;
@@ -156,6 +174,7 @@ Fecha de entrega:
     background-color: #B56A72;
 }
 
+/* Info del plan seleccionado en el formulario */
 .selected-plan-info {
     text-align: center;
     margin-bottom: 1.2rem;
@@ -163,10 +182,12 @@ Fecha de entrega:
     color: var(--text);
 }
 
+/* Ítems individuales del formulario */
 .config-item {
     margin-bottom: 1.2rem;
 }
 
+/* Fila que agrupa fecha y CVV */
 .config-row {
     display: flex;
     gap: 0.8rem;
@@ -176,6 +197,7 @@ Fecha de entrega:
     flex: 1;
 }
 
+/* Etiquetas de los campos */
 .config-item label {
     display: block;
     font-weight: 500;
@@ -184,6 +206,7 @@ Fecha de entrega:
     font-size: 0.8rem;
 }
 
+/* Estilo de campos de texto y select */
 .config-item select, 
 .config-item input {
     width: 100%;
@@ -195,12 +218,14 @@ Fecha de entrega:
     font-size: 0.8rem;
 }
 
+/* Contenedor de botones de acción */
 .payment-actions {
     display: flex;
     gap: 0.8rem;
     margin-top: 1.2rem;
 }
 
+/* Botón para volver atrás */
 .back-button {
     flex: 1;
     padding: 8px;
@@ -217,6 +242,7 @@ Fecha de entrega:
     background-color: var(--accent);
 }
 
+/* Botón de pago */
 .payment-button {
     flex: 2;
     padding: 8px;
@@ -230,6 +256,7 @@ Fecha de entrega:
     transition: all 0.2s;
 }
 
+/* Estado deshabilitado del botón de pago */
 .payment-button:hover {
     background-color: #B56A72;
 }
@@ -239,6 +266,7 @@ Fecha de entrega:
     cursor: not-allowed;
 }
 
+/* Nota legal debajo del formulario */
 .payment-note {
     font-size: 0.7rem;
     color: var(--secondary);
@@ -246,6 +274,7 @@ Fecha de entrega:
     text-align: center;
 }
 
+/* Estilos responsivos para móviles */
 @media (max-width: 480px) {
     .contenido-configuracion {
         padding: 1rem;

@@ -22,9 +22,11 @@ import { Outlet } from 'react-router-dom';
 import MenuLateral from '../MenuLateral/MenuLateral';
 import './Layout.css';
 
+// Estado para controlar si el menú lateral está abierto o cerrado
 const Layout = ({ onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
+  // useEffect para ajustar el menú según el tamaño de la ventana (abre menú si ancho > 768px)
   useEffect(() => {
     const handleResize = () => {
       setIsMenuOpen(window.innerWidth > 768);
@@ -35,8 +37,10 @@ const Layout = ({ onLogout }) => {
     window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
   }, []);
+  // Función para alternar la visibilidad del menú latera
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  // Renderiza el menú lateral y el contenido principal con un botón para mostrar/ocultar menú
   return (
     <div className="layout-container">
       <MenuLateral 
@@ -50,7 +54,7 @@ const Layout = ({ onLogout }) => {
           ☰
         </button>
         
-        <Outlet />
+        <Outlet /> {/* Renderiza las rutas hijas */}
       </main>
     </div>
   );

@@ -23,13 +23,18 @@ import './Configuracion.css';
 import Swal from 'sweetalert2';
 
 const Configuracion = () => {
+  // Estado para el plan seleccionado (null si no hay ninguno)
   const [selectedPlan, setSelectedPlan] = useState(null);
+
+  // Estados para datos del formulario de pago
   const [paymentMethod, setPaymentMethod] = useState('');
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
 
+
+  // Lista con planes de suscripción disponibles
   const plans = [
     {
       id: 1,
@@ -57,12 +62,17 @@ const Configuracion = () => {
     }
   ];
 
+  // Función que simula el proceso de pago al enviar el formulario
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsProcessing(true);
+    e.preventDefault(); // Evita recargar la página al enviar
+    setIsProcessing(true); // Activa indicador de carga
     
+
+    // Simula un retardo en la respuesta de pago (2 segundos)
     setTimeout(() => {
-      setIsProcessing(false);
+      setIsProcessing(false); // Desactiva indicador de carga
+      
+      // Muestra mensaje de éxito 
       Swal.fire({
         title: '¡Pago Exitoso!',
         text: `Has adquirido el plan ${selectedPlan.name} correctamente.`,
@@ -71,6 +81,8 @@ const Configuracion = () => {
         confirmButtonText: 'Continuar',
         background: '#FFF9F9'
       }).then(() => {
+
+        // Resetea todos los datos para permitir nueva selección
         setSelectedPlan(null);
         setPaymentMethod('');
         setCardNumber('');
@@ -85,6 +97,7 @@ const Configuracion = () => {
       <h1>Eliminar Anuncios</h1>
       
       {!selectedPlan ? (
+        // Muestra la lista de planes si no se ha seleccionado uno
         <div className="configuracion-card">
           <h2>Selecciona tu plan</h2>
           <p className="plan-subtitle">Elige cómo quieres disfrutar sin anuncios</p>
@@ -94,8 +107,10 @@ const Configuracion = () => {
               <div 
                 key={plan.id} 
                 className={`plan-card ${plan.highlight ? 'highlight-plan' : ''}`}
-                onClick={() => setSelectedPlan(plan)}
+                onClick={() => setSelectedPlan(plan)} // Selecciona el plan al hacer click
               >
+
+                {/* Etiqueta "POPULAR" para planes destacados */}
                 {plan.highlight && <div className="popular-badge">POPULAR</div>}
                 <div className="plan-content">
                   <h3>{plan.name}</h3>
@@ -109,6 +124,8 @@ const Configuracion = () => {
           </div>
         </div>
       ) : (
+
+        // Formulario para completar el pago cuando un plan está seleccionado
         <div className="payment-card">
           <h2>Completa tu pago</h2>
           <p className="selected-plan-info">
@@ -116,6 +133,7 @@ const Configuracion = () => {
           </p>
           
           <form onSubmit={handleSubmit} className="payment-form">
+            {/* Selección del método de pago */}
             <div className="config-item">
               <label>Método de Pago</label>
               <select 
@@ -130,6 +148,7 @@ const Configuracion = () => {
               </select>
             </div>
             
+            {/* Entrada para número de tarjeta */}
             <div className="config-item">
               <label>Número de Tarjeta</label>
               <input 
@@ -141,6 +160,7 @@ const Configuracion = () => {
               />
             </div>
             
+             {/* Campos para fecha de expiración y CVV */}
             <div className="config-row">
               <div className="config-item">
                 <label>Fecha de Expiración</label>
@@ -165,17 +185,18 @@ const Configuracion = () => {
               </div>
             </div>
             
+             {/* Botones para cambiar plan o enviar pago */}
             <div className="payment-actions">
               <button 
                 type="button" 
                 className="back-button"
-                onClick={() => setSelectedPlan(null)}
+                onClick={() => setSelectedPlan(null)} // Permite volver a la selección de plan
               >
                 Cambiar plan
               </button>
               <button 
                 type="submit" 
-                disabled={isProcessing} 
+                disabled={isProcessing}  // Deshabilita mientras se procesa pago
                 className="payment-button"
               >
                 {isProcessing ? 'Procesando...' : `Pagar ${selectedPlan.price}`}

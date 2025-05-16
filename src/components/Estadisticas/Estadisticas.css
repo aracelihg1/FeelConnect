@@ -1,7 +1,8 @@
-/* Estadisticas.css */
+/* Importa las fuentes desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Winky+Rough&display=swap');
 
+/* Variables CSS para una paleta de colores consistente */
 :root {
   --primary: #5A4A42;
   --secondary: #A78B7D;
@@ -10,12 +11,14 @@
   --white: #FFFFFF;
 }
 
+/* Contenedor principal de la página de estadísticas */
 .estadisticas-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* Contenedor central del contenido */
 .content-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -26,6 +29,7 @@
   width: 100%;
 }
 
+/* Título principal de la sección */
 .titulo-estadisticas {
   font-family: 'Winky Rough', cursive;
   font-size: 2.5rem;
@@ -34,16 +38,18 @@
   margin-bottom: 2rem;
 }
 
+/* Contenedor del iframe para mantener la relación de aspecto */
 .estadisticas-container {
   position: relative;
   overflow: hidden;
-  padding-top: 56.25%; /* Relación de aspecto 16:9 */
+  padding-top: 56.25%; 
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: white;
   margin-bottom: 2rem;
 }
 
+/* Iframe embebido (Power BI) adaptado al contenedor */
 .powerbi-dashboard {
   position: absolute;
   top: 0;
@@ -53,6 +59,7 @@
   border: none;
 }
 
+/* Estilos responsivos para pantallas más pequeñas */
 @media (max-width: 768px) {
   .titulo-estadisticas {
     font-size: 2rem;

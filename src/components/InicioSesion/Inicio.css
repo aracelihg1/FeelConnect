@@ -18,9 +18,10 @@ Fecha de entrega:
 16/05/2025
 */
 
-
+/* Importa las fuentes Inter y Winky Rough desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
 
+/* Variables para colores y estilos reutilizables */
 :root {
   --primary-color: #A78B7D; 
   --secondary-color: #D4B8A7; 
@@ -33,12 +34,14 @@ Fecha de entrega:
   --warm-gray: #D9CEC4; 
 }
 
+/* Reset general para quitar márgenes y paddings, y usar box-sizing para que padding y borde no afecten tamaño */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Estilos base del body */
 body {
   font-family: 'Inter', sans-serif;
   color: var(--text-color);
@@ -46,6 +49,7 @@ body {
   height: 100vh;
 }
 
+/* Contenedor principal del login */
 .login-container {
   position: relative;
   width: 100%;
@@ -56,6 +60,7 @@ body {
   background: linear-gradient(135deg, #F3E9E0 0%, #E8D5C5 100%);
 }
 
+/* Contenedor para los elementos de fondo animados */
 .background-container {
   position: absolute;
   width: 100%;
@@ -64,6 +69,7 @@ body {
   z-index: 0;
 }
 
+/* Elementos que se mueven en el fondo, con SVG como fondo semi-transparente */
 .moving-element {
   position: absolute;
   width: 200px;
@@ -73,6 +79,7 @@ body {
   z-index: 0;
 }
 
+/* Caja principal del login */
 .login-box {
   position: relative;
   z-index: 1;
@@ -89,10 +96,12 @@ body {
   transition: all 0.3s ease;
 }
 
+/* Clase para animación shake (sacudida) en caso de error */
 .login-box.shake {
   animation: shake 0.5s ease-in-out;
 }
 
+/* Contenedor del logo: usa flexbox en columna centrado */
 .logo-container {
   display: flex;
   flex-direction: column;
@@ -100,6 +109,7 @@ body {
   margin-bottom: 1.5rem;
 }
 
+/* Icono del logo, tamaño y color con animación de pulso */
 .logo-icon {
   font-size: 3.5rem;
   color: var(--dark-accent);
@@ -107,6 +117,7 @@ body {
   animation: pulse 2s infinite;
 }
 
+/* Texto del logo con fuente cursiva y tamaño grande */
 .logo-text {
   font-family: 'Winky Rough', cursive;
   font-size: 2.5rem;
@@ -116,6 +127,7 @@ body {
   margin: 0;
 }
 
+/* Slogan con estilo centrado y color */
 .slogan {
   font-family: 'Inter', sans-serif;
   text-align: center;
@@ -125,18 +137,21 @@ body {
   font-size: 1rem;
 }
 
+/* Formulario con flexbox en columna y espacios entre inputs */
 .login-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
+/* Agrupador para inputs con icono */
 .input-group {
   position: relative;
   display: flex;
   align-items: center;
 }
 
+/* Icono dentro del input, posición absoluta a la izquierda */
 .input-icon {
   position: absolute;
   left: 15px;
@@ -144,6 +159,7 @@ body {
   font-size: 1.2rem;
 }
 
+/* Inputs de texto con padding para espacio interno, bordes redondeados y sombra */
 .login-input {
   width: 100%;
   padding: 15px 15px 15px 45px;
@@ -156,6 +172,7 @@ body {
   box-shadow: 0 2px 4px rgba(90, 74, 66, 0.05);
 }
 
+/* Estilo al enfocar el input: borde y sombra más visibles */
 .login-input:focus {
   outline: none;
   border-color: var(--accent-color);
@@ -163,6 +180,7 @@ body {
   box-shadow: 0 4px 12px rgba(168, 123, 125, 0.15);
 }
 
+/* Botón para mostrar/ocultar contraseña */
 .password-toggle {
   position: absolute;
   right: 15px;
@@ -176,6 +194,7 @@ body {
   justify-content: center;
 }
 
+/* Botón de inicio de sesión con colores degradados y sombra */
 .login-button {
   padding: 15px;
   border: none;
@@ -193,21 +212,25 @@ body {
   height: 50px;
 }
 
+/* Efecto hover para botón: eleva y cambia gradiente */
 .login-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(168, 123, 125, 0.35);
   background: linear-gradient(135deg, var(--dark-accent), var(--primary-color));
 }
 
+/* Estado activo del botón */
 .login-button:active {
   transform: translateY(0);
 }
 
+/* Estado de carga (loading) del botón, cambia el cursor */
 .login-button.loading {
   background: linear-gradient(135deg, var(--primary-color), var(--dark-accent));
   cursor: not-allowed;
 }
 
+/* Spinner animado para indicar carga */
 .spinner {
   width: 20px;
   height: 20px;
@@ -217,12 +240,14 @@ body {
   animation: spin 1s ease-in-out infinite;
 }
 
+/* Contenedor para enlaces, con espacio entre ellos */
 .links-container {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
 }
 
+/* Estilos para enlaces */
 .link {
   color: var(--primary-color);
   text-decoration: none;
@@ -231,11 +256,13 @@ body {
   transition: all 0.2s ease;
 }
 
+/* Efecto hover en enlaces: color y subrayado */
 .link:hover {
   color: var(--dark-accent);
   text-decoration: underline;
 }
 
+/* Animación para aparecer con opacidad y movimiento vertical */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -247,6 +274,7 @@ body {
   }
 }
 
+/* Animación de sacudida horizontal */
 @keyframes shake {
   0%, 100% {
     transform: translateX(0);
@@ -259,6 +287,7 @@ body {
   }
 }
 
+/* Animación de pulso para el icono */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -274,12 +303,14 @@ body {
   }
 }
 
+/* Animación de rotación continua para spinner */
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
+/* Transición larga y suave para mover elementos de fondo */
 .moving-element {
   transition: all 15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }

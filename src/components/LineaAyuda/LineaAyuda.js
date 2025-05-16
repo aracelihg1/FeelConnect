@@ -21,7 +21,9 @@ Fecha de entrega:
 import React from 'react';
 import './LineaAyuda.css';
 
+// Componente funcional llamado LineaAyuda
 const LineaAyuda = () => {
+  // Array con objetos que representan distintos centros de ayuda psicológica
   const centros = [
     {
       nombre: 'Consejería SAPTEL',
@@ -115,6 +117,7 @@ const LineaAyuda = () => {
     }
   ];
 
+  // Retorna el JSX que renderiza la interfaz
   return (
     <div className="linea-ayuda-container">
       <h1 className="titulo-ayuda">Líneas de Ayuda Psicológica</h1>
@@ -153,6 +156,7 @@ const LineaAyuda = () => {
               </div>
             </div>
             
+             {/* Si existe URL, muestra un botón que abre el sitio oficial en una pestaña nueva */}
             {centro.url && (
               <a 
                 href={centro.url} 

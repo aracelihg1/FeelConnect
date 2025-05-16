@@ -18,9 +18,11 @@ Fecha de entrega:
 16/05/2025
 */
 
+/* Importa las fuentes desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Winky+Rough&display=swap');
 
+/* Define variables de color para facilitar cambios globales de tema */
 :root {
   --primary: #5A4A42;
   --secondary: #A78B7D;
@@ -31,6 +33,7 @@ Fecha de entrega:
   --rosa-oscuro: #C97B84;
 }
 
+/* Contenedor principal del foro */
 .foro-container {
   max-width: 800px;
   margin: 0 auto;
@@ -39,6 +42,7 @@ Fecha de entrega:
   color: var(--primary);
 }
 
+/* Título principal con fuente decorativa */
 .titulo-foro {
   font-family: 'Winky Rough', cursive;
   font-size: 2.5rem;
@@ -47,6 +51,7 @@ Fecha de entrega:
   margin-bottom: 0.5rem;
 }
 
+/* Subtítulo del foro */
 .subtitulo-foro {
   text-align: center;
   color: var(--secondary);
@@ -54,6 +59,7 @@ Fecha de entrega:
   margin-bottom: 2rem;
 }
 
+/* Estilos del área para publicar un nuevo mensaje */
 .nuevo-mensaje {
   background: var(--white);
   padding: 1.5rem;
@@ -62,6 +68,7 @@ Fecha de entrega:
   box-shadow: 0 2px 8px rgba(90, 74, 66, 0.1);
 }
 
+/* Caja de texto para escribir mensaje */
 .nuevo-mensaje textarea {
   width: 100%;
   padding: 1rem;
@@ -72,6 +79,7 @@ Fecha de entrega:
   margin-bottom: 1rem;
 }
 
+/* Selector de categoría */
 .categoria-selector {
   margin-bottom: 1rem;
 }
@@ -86,6 +94,7 @@ Fecha de entrega:
   border: 1px solid var(--accent);
 }
 
+/* Botón de publicar mensaje */
 .btn-publicar {
   background-color: var(--rosa-oscuro);
   color: white;
@@ -102,6 +111,7 @@ Fecha de entrega:
   gap: 0.5rem;
 }
 
+/* Efecto hover para el botón */
 .btn-publicar:hover {
   background-color: var(--rosa-claro);
   transform: scale(1.02);
@@ -111,6 +121,7 @@ Fecha de entrega:
   font-size: 1.1rem;
 }
 
+/* Contenedor de filtros (botones de categoría) */
 .filtros {
   display: flex;
   gap: 0.5rem;
@@ -118,6 +129,7 @@ Fecha de entrega:
   flex-wrap: wrap;
 }
 
+/* Estilo base de cada botón de filtro */
 .filtros button {
   background: var(--light-bg);
   border: 1px solid var(--accent);
@@ -128,17 +140,20 @@ Fecha de entrega:
   transition: all 0.3s;
 }
 
+/* Botón activo seleccionado */
 .filtros button.activo {
   background: var(--accent);
   font-weight: 600;
 }
 
+/* Lista de mensajes */
 .lista-mensajes {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
+/* Estilo individual de cada mensaje */
 .mensaje {
   background: var(--white);
   border-radius: 10px;
@@ -146,15 +161,18 @@ Fecha de entrega:
   box-shadow: 0 2px 8px rgba(90, 74, 66, 0.1);
 }
 
+/* Contenido del mensaje (texto, usuario, reacciones) */
 .contenido-mensaje {
   padding: 1.5rem;
 }
 
+/* Texto del mensaje principal */
 .texto-mensaje {
   margin: 0 0 1rem 0;
   line-height: 1.6;
 }
 
+/* Usuario anónimo del mensaje */
 .usuario-anonimo {
   font-size: 0.8rem;
   color: var(--secondary);
@@ -169,6 +187,7 @@ Fecha de entrega:
   opacity: 0.7;
 }
 
+/* Sección de reacciones de mensaje */
 .reacciones {
   display: flex;
   align-items: center;
@@ -184,6 +203,7 @@ Fecha de entrega:
   font-size: 0.9rem;
 }
 
+/* Botones de emojis para reaccionar */
 .opciones-reaccion {
   display: flex;
   gap: 0.5rem;
@@ -201,6 +221,7 @@ Fecha de entrega:
   transform: scale(1.2);
 }
 
+/* Botón para ver las respuestas */
 .btn-respuestas {
   background: none;
   border: none;
@@ -211,12 +232,14 @@ Fecha de entrega:
   font-size: 0.9rem;
 }
 
+/* Contenedor de respuestas */
 .respuestas {
   background: var(--light-bg);
   padding: 1rem 1.5rem;
   border-top: 1px solid var(--accent);
 }
 
+/* Estilo individual de cada respuesta */
 .respuesta {
   padding: 1rem 0;
   border-bottom: 1px dashed var(--accent);
@@ -226,6 +249,7 @@ Fecha de entrega:
   border-bottom: none;
 }
 
+/* Texto dentro de una respuesta */
 .texto-respuesta {
   margin: 0 0 0.5rem 0;
   line-height: 1.6;
@@ -233,6 +257,7 @@ Fecha de entrega:
   border-left: 3px solid var(--accent);
 }
 
+/* Reacciones dentro de las respuestas */
 .reacciones-respuesta {
   display: flex;
   align-items: center;
@@ -240,6 +265,7 @@ Fecha de entrega:
   margin-left: 1rem;
 }
 
+/* Área para escribir una nueva respuesta */
 .nueva-respuesta {
   margin-top: 1.5rem;
 }
@@ -254,6 +280,7 @@ Fecha de entrega:
   margin-bottom: 0.8rem;
 }
 
+/* Adaptación del diseño para pantallas pequeñas */
 @media (max-width: 768px) {
   .titulo-foro {
     font-size: 2rem;

@@ -24,20 +24,23 @@ import { FiUser, FiLock, FiHeart, FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-
+// Componente funcional 'Inicio' 
 const Inicio = ({ onLogin }) => {
+  // Estados locales
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [shake, setShake] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook para redireccionar
 
+  // Función para manejar el envío del formulario
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevenir recarga de página
 
+    // Validación de campos vacíos
     if (!email || !password) {
-      setShake(true);
+      setShake(true); // Activar animación
       setTimeout(() => setShake(false), 500);
       return;
     }
@@ -45,6 +48,7 @@ const Inicio = ({ onLogin }) => {
     setIsLoading(true);
 
     try {
+       // Solicitud al backend con credenciales por query params
       const response = await fetch(`http://localhost:8080/Usuario/login?correo=${encodeURIComponent(email)}&contrasenia=${encodeURIComponent(password)}`, {
         method: 'POST',
         headers: {
@@ -53,15 +57,18 @@ const Inicio = ({ onLogin }) => {
       });
 
       if (response.ok) {
+        // Si la respuesta es válida, obtener datos del usuario
         const result = await response.json();
         console.log('Resultado del login:', result); 
 
+        // Guardar datos del usuario en localStorage
         localStorage.setItem('usuarioId', result.idUsuario);
         localStorage.setItem('usuarioAlias', result.alias); 
 
-            onLogin();
+        onLogin(); // Notificar al componente padre
         navigate('/Principal', { replace: true });
       } else {
+        // Mostrar alerta si las credenciales son incorrectas
         Swal.fire({
           title: 'Error',
           text: 'Correo electrónico o contraseña inválidos',
@@ -74,6 +81,7 @@ const Inicio = ({ onLogin }) => {
         setTimeout(() => setShake(false), 500);
       }
     } catch (error) {
+      // Error de conexión al backend
       Swal.fire({
         title: 'Error de conexión',
         text: 'No se pudo conectar con el servidor',
@@ -88,15 +96,19 @@ const Inicio = ({ onLogin }) => {
     }
   };
 
+  // Efecto para crear elementos flotantes animados en el fondo
   useEffect(() => {
     const createMovingElement = () => {
       const element = document.createElement('div');
       element.className = 'moving-element';
+      // Añadir al contenedor de fondo
       document.querySelector('.background-container').appendChild(element);
 
+      // Posición inicial aleatoria
       const startX = Math.random() * 100;
       const startY = Math.random() * 100;
 
+      // Animación hacia una nueva posición
       element.style.left = `${startX}%`;
       element.style.top = `${startY}%`;
 
@@ -107,18 +119,21 @@ const Inicio = ({ onLogin }) => {
         element.style.left = `${newX}%`;
         element.style.top = `${newY}%`;
 
+        // Continuar movimiento cuando termine la transición
         element.addEventListener('transitionend', move, { once: true });
       };
 
       setTimeout(move, Math.random() * 2000);
     };
 
+    // Crear 15 elementos animados
     for (let i = 0; i < 15; i++) {
       createMovingElement();
     }
   }, []);
 
   return (
+    // JSX del componente
     <div className="login-container">
       <div className="background-container"></div>
 
@@ -130,7 +145,9 @@ const Inicio = ({ onLogin }) => {
 
         <p className="slogan">Conecta tu mente, sé tú, sé valiente</p>
 
+        {/* Formulario de login */}
         <form onSubmit={handleSubmit} className="login-form">
+          {/* Campo de correo */}
           <div className="input-group">
             <FiUser className="input-icon" />
             <input
@@ -143,6 +160,7 @@ const Inicio = ({ onLogin }) => {
             />
           </div>
 
+          {/* Campo de contraseña con toggle de visibilidad */}
           <div className="input-group">
             <FiLock className="input-icon" />
             <input
@@ -162,6 +180,7 @@ const Inicio = ({ onLogin }) => {
             </button>
           </div>
 
+          {/* Botón de inicio de sesión */}
           <button
             type="submit"
             className={`login-button ${isLoading ? 'loading' : ''}`}
@@ -171,8 +190,8 @@ const Inicio = ({ onLogin }) => {
           </button>
         </form>
 
+         {/* Enlace a registro */}
         <div className="links-container">
-          
           <Link to="/registro" className="link">Regístrate</Link>
         </div>
       </div>

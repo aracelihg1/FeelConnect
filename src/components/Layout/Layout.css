@@ -17,11 +17,13 @@
   16/05/2025
 */
 
+/* Flex contenedor */
 .layout-container {
     display: flex;
     min-height: 100vh;
   }
   
+  /* Contenido */
   .main-content {
     flex: 1;
     transition: margin-left 0.3s ease;
@@ -29,10 +31,12 @@
     background-color: #F9F5F2;
   }
   
+  /* Menú abierto */
   .menu-open {
     margin-left: 280px;
   }
   
+  /* Botón menú */
   .menu-toggle {
     display: none;
     background: none;

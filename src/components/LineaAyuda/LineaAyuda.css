@@ -22,6 +22,7 @@ Fecha de entrega:
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Winky+Rough&display=swap');
 
+/* Variables para colores y estilos reutilizables */
 :root {
   --primary: #5A4A42;
   --secondary: #A78B7D;
@@ -32,6 +33,7 @@ Fecha de entrega:
   --rosa-oscuro: #C97B84;
 }
 
+/* Contenedor principal del componente */
 .linea-ayuda-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -41,6 +43,7 @@ Fecha de entrega:
   background-color: var(--light-bg);
 }
 
+/* Título principal */
 .titulo-ayuda {
   font-family: 'Winky Rough', cursive;
   font-size: 2.5rem;
@@ -49,6 +52,7 @@ Fecha de entrega:
   margin-bottom: 0.5rem;
 }
 
+/* Subtítulo centrado con estilo más suave */
 .subtitulo-ayuda {
   text-align: center;
   color: var(--secondary);
@@ -57,6 +61,7 @@ Fecha de entrega:
   font-weight: 400;
 }
 
+/* Grid para mostrar tarjetas de centros */
 .centros-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -64,6 +69,7 @@ Fecha de entrega:
   margin-bottom: 2rem;
 }
 
+/* Tarjeta individual que contiene información de un centro */
 .centro-card {
   background: var(--white);
   border-radius: 10px;
@@ -73,11 +79,13 @@ Fecha de entrega:
   border: 1px solid var(--accent);
 }
 
+/* Efecto hover para la tarjeta */
 .centro-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(90, 74, 66, 0.15);
 }
 
+/* Nombre del centro */
 .nombre-centro {
   color: var(--primary);
   font-size: 1.4rem;
@@ -87,6 +95,7 @@ Fecha de entrega:
   font-weight: 600;
 }
 
+/* Caja para la descripción */
 .descripcion-box {
   background-color: var(--light-bg);
   padding: 1.2rem;
@@ -95,6 +104,7 @@ Fecha de entrega:
   border-left: 4px solid var(--rosa-oscuro);
 }
 
+/* Texto dentro de la descripción */
 .descripcion-texto {
   color: var(--primary);
   font-size: 0.95rem;
@@ -102,16 +112,19 @@ Fecha de entrega:
   margin: 0;
 }
 
+/* Contenedor de información de contacto */
 .info-contacto {
   margin-bottom: 1.8rem;
 }
 
+/* Elemento individual de información */
 .info-item {
   display: flex;
   margin-bottom: 0.7rem;
   align-items: flex-start;
 }
 
+/* Etiqueta descriptiva de la información */
 .info-label {
   font-weight: 600;
   width: 90px;
@@ -119,6 +132,7 @@ Fecha de entrega:
   font-size: 0.9rem;
 }
 
+/* Valor de la información */
 .info-value {
   flex: 1;
   font-size: 0.95rem;
@@ -136,6 +150,7 @@ a.info-value:hover {
   text-decoration: underline;
 }
 
+/* Botón que enlaza al sitio web del centro */
 .btn-sitio-web {
   display: block;
   text-align: center;

@@ -21,6 +21,7 @@ Fecha de entrega:
 import React, { useState } from 'react';
 import './Foros.css';
 
+// Emojis que los usuarios pueden usar como reacciones
 const EMOJIS = {
   LIKE: '👍',
   HEART: '❤️',
@@ -28,6 +29,7 @@ const EMOJIS = {
   THINK: '🤔'
 };
 
+// Función que genera un nombre de usuario anónimo aleatorio
 const generateRandomUsername = () => {
   const adjectives = ['Anónimo', 'Misterioso', 'Secreto', 'Silencioso', 'Invisible', 'Oculto', 'Desconocido', 'Misterioso'];
   const nouns = ['Amigo', 'Visitante', 'Usuario', 'Participante', 'Colaborador', 'Explorador', 'Viajero', 'Soñador'];
@@ -36,8 +38,11 @@ const generateRandomUsername = () => {
   return `${randomAdj} ${randomNoun} ${Math.floor(1000 + Math.random() * 9000)}`;
 };
 
+// Componente principal del foro
 const Foros = () => {
+  // Estado que contiene todos los mensajes
   const [mensajes, setMensajes] = useState([
+    // Mensajes iniciales con sus propiedades: texto, categoría, reacciones, respuestas, etc.
     {
       id: 1,
       texto: "¿Alguien ha probado la técnica de respiración 4-7-8 para la ansiedad?",
@@ -118,11 +123,16 @@ const Foros = () => {
     }
   ]);
 
+  // Estado para manejar el texto del nuevo mensaje
   const [nuevoMensaje, setNuevoMensaje] = useState('');
+  // Estado para manejar respuestas por cada mensaje
   const [nuevaRespuesta, setNuevaRespuesta] = useState({});
+  // Filtro actual para mostrar mensajes según su categoría
   const [filtro, setFiltro] = useState('todos');
+  // Categoría seleccionada al escribir un nuevo mensaje
   const [categoriaMensaje, setCategoriaMensaje] = useState('positivo');
 
+  // Publica un nuevo mensaje si el contenido no está vacío
   const publicarMensaje = () => {
     if (nuevoMensaje.trim()) {
       const nuevo = {
@@ -134,11 +144,12 @@ const Foros = () => {
         expandido: false,
         usuario: generateRandomUsername()
       };
-      setMensajes([nuevo, ...mensajes]);
+      setMensajes([nuevo, ...mensajes]); // Agrega el mensaje al inicio de la lista
       setNuevoMensaje('');
     }
   };
 
+  // Agrega una respuesta a un mensaje específico
   const agregarRespuesta = (mensajeId) => {
     if (nuevaRespuesta[mensajeId]?.trim()) {
       const respuesta = {
@@ -157,14 +168,17 @@ const Foros = () => {
     }
   };
 
+  // Agrega una reacción (emoji) a un mensaje o respuesta
   const agregarReaccion = (mensajeId, respuestaId, emoji) => {
     setMensajes(mensajes.map(msg => {
       if (msg.id === mensajeId) {
         if (!respuestaId) {
+          // Reacción al mensaje principal
           const nuevasReacciones = { ...msg.reacciones };
           nuevasReacciones[emoji] = (nuevasReacciones[emoji] || 0) + 1;
           return { ...msg, reacciones: nuevasReacciones };
         } else {
+          // Reacción a una respuesta
           const nuevasRespuestas = msg.respuestas.map(resp => {
             if (resp.id === respuestaId) {
               const nuevasReacciones = { ...resp.reacciones };
@@ -180,16 +194,19 @@ const Foros = () => {
     }));
   };
 
+  // Alterna entre mostrar u ocultar las respuestas de un mensaje
   const toggleExpandido = (mensajeId) => {
     setMensajes(mensajes.map(msg =>
       msg.id === mensajeId ? { ...msg, expandido: !msg.expandido } : msg
     ));
   };
 
+  // Filtra los mensajes según la categoría seleccionada
   const mensajesFiltrados = filtro === 'todos'
     ? mensajes
     : mensajes.filter(msg => msg.categoria === filtro);
 
+  // Renderizado del componente
   return (
     <div className="foro-container">
       <h1 className="titulo-foro">Foro de Apoyo Emocional</h1>
@@ -218,6 +235,7 @@ const Foros = () => {
         </button>
       </div>
 
+      {/* Botones para filtrar los mensajes por categoría */}
       <div className="filtros">
         <button
           onClick={() => setFiltro('todos')}
@@ -245,6 +263,7 @@ const Foros = () => {
         </button>
       </div>
 
+      {/* Lista de mensajes filtrados */}
       <div className="lista-mensajes">
         {mensajesFiltrados.map((mensaje) => (
           <div key={mensaje.id} className="mensaje">
@@ -273,6 +292,7 @@ const Foros = () => {
                 </div>
               </div>
 
+              {/* Botón para mostrar/ocultar respuestas */}
               <button
                 onClick={() => toggleExpandido(mensaje.id)}
                 className="btn-respuestas"
@@ -281,6 +301,7 @@ const Foros = () => {
               </button>
             </div>
 
+            {/* Sección de respuestas si el mensaje está expandido */}
             {mensaje.expandido && (
               <div className="respuestas">
                 {mensaje.respuestas.map((respuesta) => (
@@ -310,6 +331,7 @@ const Foros = () => {
                   </div>
                 ))}
 
+                {/* Formulario para añadir una nueva respuesta */}
                 <div className="nueva-respuesta">
                   <textarea
                     value={nuevaRespuesta[mensaje.id] || ''}

@@ -20,13 +20,18 @@ Fecha de entrega:
 
 import './Estadisticas.css';
 
+// Componente funcional Estadisticas
 const Estadisticas = () => {
   return (
-    <div className="estadisticas-page"> 
-      <div className="content-container"> 
+    // Contenedor principal de la página de estadísticas
+    <div className="estadisticas-page">
+      {/* Contenedor interno que centra y organiza el contenido */}
+      <div className="content-container">
+        {/* Título principal de la sección */}
         <h1 className="titulo-estadisticas">Estadísticas de la Comunidad</h1>
-
+        {/* Contenedor que incluye el iframe del dashboard */}
         <div className="estadisticas-container"> 
+           {/* Iframe que embebe un dashboard de Power BI */}
           <iframe 
             title="Dashboard - FeelConnect" 
             className="powerbi-dashboard"
