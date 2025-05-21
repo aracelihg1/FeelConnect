@@ -17,13 +17,15 @@
   16/05/2025
 */
 
-
 import React, { useState, useEffect, useRef } from 'react';
 import './Perfil.css';
 import Swal from 'sweetalert2';
 
 const Perfil = () => {
+  // Estado para controlar si estamos en modo edición o solo visualización
   const [editMode, setEditMode] = useState(false);
+
+  // Estado para guardar los datos del perfil
   const [profile, setProfile] = useState({
     nombre: '',
     apePat: '',
@@ -32,19 +34,22 @@ const Perfil = () => {
     correo: '',
     alias: '',
     avatar: null,
-    contrasenia: ''  // Añadido el campo para la contraseña
+    contrasenia: ''  // Campo para la contraseña
   });
 
+  // Referencia para el input tipo file oculto, para subir avatar
   const fileInputRef = useRef(null);
 
-  // Cargar perfil al montar componente
+  // useEffect para cargar la información del perfil al montar el componente
   useEffect(() => {
-    const idUsuario = localStorage.getItem('usuarioId');
-    if (!idUsuario) return;
+    const idUsuario = localStorage.getItem('usuarioId'); // Obtener id de usuario desde localStorage
+    if (!idUsuario) return;  // Si no hay id, no continuar
 
+    // Petición para obtener los datos del usuario por su id
     fetch(`http://localhost:8080/Usuario/${idUsuario}`)
       .then(res => res.json())
       .then(data => {
+        // Actualiza el estado profile con la info obtenida, asegurando valores por defecto
         setProfile({
           nombre: data.nombre || '',
           apePat: data.apePat || '',
@@ -53,12 +58,13 @@ const Perfil = () => {
           correo: data.correo || '',
           alias: data.alias || '',
           avatar: data.avatar || null,
-          contrasenia: data.contrasenia || ''  // No pre-cargar la contraseña
+          contrasenia: data.contrasenia || ''  // No se suele pre-cargar contraseña visible
         });
       })
       .catch(err => console.error('Error al obtener el perfil:', err));
   }, []);
 
+  // Función para actualizar el estado profile cuando cambia un input
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProfile(prev => ({
@@ -67,11 +73,13 @@ const Perfil = () => {
     }));
   };
 
+  // Maneja el cambio de archivo para el avatar
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
+        // Guarda la imagen en base64 en el estado profile.avatar para previsualización
         setProfile(prev => ({
           ...prev,
           avatar: reader.result
@@ -81,6 +89,7 @@ const Perfil = () => {
     }
   };
 
+  // Función para eliminar la foto de perfil (avatar)
   const handleRemoveAvatar = () => {
     setProfile(prev => ({
       ...prev,
@@ -88,14 +97,17 @@ const Perfil = () => {
     }));
   };
 
+  // Función para simular click en input file oculto
   const triggerFileInput = () => {
     fileInputRef.current.click();
   };
 
+  // Función para guardar los cambios haciendo una petición PUT
   const handleSave = () => {
     const idUsuario = localStorage.getItem('usuarioId');
     if (!idUsuario) return;
 
+    // Confirmación modal antes de guardar cambios
     Swal.fire({
       title: '¿Guardar cambios?',
       text: 'Se actualizará tu información de perfil',
@@ -107,6 +119,7 @@ const Perfil = () => {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
+        // Petición PUT para actualizar perfil
         fetch(`http://localhost:8080/Usuario/${idUsuario}`, {
           method: 'PUT',
           headers: {
@@ -116,6 +129,7 @@ const Perfil = () => {
         })
           .then(response => {
             if (response.ok) {
+              // Mostrar mensaje éxito y salir de modo edición
               Swal.fire({
                 title: '¡Cambios guardados!',
                 icon: 'success',
@@ -127,6 +141,7 @@ const Perfil = () => {
             }
           })
           .catch(err => {
+            // Mostrar error si la actualización falla
             Swal.fire({
               title: 'Error',
               text: 'No se pudo actualizar el perfil.',
@@ -142,6 +157,7 @@ const Perfil = () => {
     <div className="contenido-perfil">
       <h1>Mi Perfil</h1>
       <div className="perfil-card">
+        {/* Contenedor de avatar con imagen o icono */}
         <div className="avatar-container">
           <div 
             className="avatar" 
@@ -149,10 +165,12 @@ const Perfil = () => {
               backgroundImage: profile.avatar ? `url(${profile.avatar})` : 'none',
               backgroundColor: profile.avatar ? 'transparent' : '#D4B8A7'
             }}
-            onClick={editMode ? triggerFileInput : null}
+            onClick={editMode ? triggerFileInput : null} // Solo permite cambiar avatar en modo edición
           >
-            {!profile.avatar && '👤'}
+            {!profile.avatar && '👤'} {/* Icono por defecto si no hay avatar */}
           </div>
+
+          {/* Opciones para cambiar o eliminar avatar, visibles solo en modo edición */}
           {editMode && (
             <>
               <input
@@ -182,6 +200,7 @@ const Perfil = () => {
           )}
         </div>
 
+        {/* Si estamos en modo edición, mostrar formulario con inputs */}
         {editMode ? (
           <div className="profile-form">
             <div className="form-group">
@@ -198,7 +217,7 @@ const Perfil = () => {
               <label>Apellidos</label>
               <input
                 type="text"
-                name="apellidos"
+                name="apePat"  // corregido para que coincida con el estado
                 value={profile.apePat}
                 onChange={handleInputChange}
               />
@@ -235,7 +254,7 @@ const Perfil = () => {
               <label>Correo electrónico</label>
               <input
                 type="email"
-                name="email"
+                name="correo"  // corregido para que coincida con el estado
                 value={profile.correo}
                 onChange={handleInputChange}
               />
@@ -254,7 +273,7 @@ const Perfil = () => {
             <div className="form-group">
               <label>Contraseña</label>
               <input
-                type="contrasenia"
+                type="password"  // para ocultar caracteres
                 name="contrasenia"
                 value={profile.contrasenia}
                 onChange={handleInputChange}
@@ -264,29 +283,30 @@ const Perfil = () => {
             <div className="form-actions">
               <button 
                 className="btn-cancel"
-                onClick={() => setEditMode(false)}
+                onClick={() => setEditMode(false)} // Cancela la edición sin guardar
               >
                 Cancelar
               </button>
               <button 
                 className="btn-save"
-                onClick={handleSave}
+                onClick={handleSave} // Guarda los cambios
               >
                 Guardar Cambios
               </button>
             </div>
           </div>
         ) : (
+          // Modo visualización, muestra los datos pero no permite editar
           <div className="profile-info">
             <h2>{profile.nombre} {profile.apePat}</h2>
             <p>{profile.correo}</p>
             {profile.edad && <p>{profile.edad} años</p>}
             {profile.sexo && <p>{profile.sexo}</p>}
-            <p>{profile.alias}</p> {/* Mostrar el alias */}
+            <p>{profile.alias}</p>
             
             <button 
               className="btn-edit"
-              onClick={() => setEditMode(true)}
+              onClick={() => setEditMode(true)} // Pasa a modo edición
             >
               Editar Perfil
             </button>

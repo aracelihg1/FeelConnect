@@ -17,8 +17,10 @@
   16/05/2025
 */
 
+/* Importa las fuentes Inter y Winky Rough desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Winky+Rough:wght@400;600&display=swap');
 
+/* Contenedor principal del perfil: margen, fuente y color */
 .contenido-perfil {
   padding: 2rem;
   font-family: 'Inter', sans-serif;
@@ -27,6 +29,7 @@
   margin: 0 auto;
 }
 
+/* Estilo para el título principal dentro del perfil */
 .contenido-perfil h1 {
   font-family: 'Winky Rough', cursive;
   color: #5A4A42;
@@ -35,6 +38,7 @@
   text-align: center;
 }
 
+/* Tarjeta que contiene todo el contenido del perfil */
 .perfil-card {
   background: #FFFFFF;
   border-radius: 10px;
@@ -47,11 +51,12 @@
   color: #5A4A42;
 }
 
-/* Avatar */
+/* Contenedor del avatar con margen inferior */
 .avatar-container {
   margin-bottom: 1.5rem;
 }
 
+/* Estilo para el avatar: tamaño, forma circular, fondo y animación al pasar el cursor */
 .avatar {
   width: 120px;
   height: 120px;
@@ -68,10 +73,12 @@
   transition: all 0.3s ease;
 }
 
+/* Efecto hover para el avatar: ligero zoom */
 .avatar:hover {
   transform: scale(1.05);
 }
 
+/* Contenedor para los botones relacionados al avatar (cambiar y eliminar) */
 .avatar-actions {
   display: flex;
   justify-content: center;
@@ -79,6 +86,7 @@
   margin-top: 1rem;
 }
 
+/* Estilos generales para los botones de cambiar y eliminar avatar */
 .btn-change-avatar,
 .btn-remove-avatar {
   padding: 0.4rem 0.8rem;
@@ -90,25 +98,29 @@
   transition: all 0.3s ease;
 }
 
+/* Botón para cambiar avatar: color marrón claro y texto blanco */
 .btn-change-avatar {
   background-color: #A78B7D;
   color: white;
 }
 
+/* Hover para botón cambiar avatar: tono más oscuro */
 .btn-change-avatar:hover {
   background-color: #8A7163;
 }
 
+/* Botón para eliminar avatar: rojo fuerte con texto blanco */
 .btn-remove-avatar {
   background-color: #FF6B6B;
   color: white;
 }
 
+/* Hover para botón eliminar avatar: rojo más oscuro */
 .btn-remove-avatar:hover {
   background-color: #E05555;
 }
 
-/* Información del perfil */
+/* Títulos secundarios dentro de la sección de información del perfil */
 .profile-info h2 {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
@@ -117,6 +129,7 @@
   font-size: 1.5rem;
 }
 
+/* Párrafos con detalles de perfil: color y opacidad para suavizar */
 .profile-info p {
   color: #5A4A42;
   opacity: 0.8;
@@ -124,15 +137,17 @@
   font-size: 1.1rem;
 }
 
-/* Formulario */
+/* Formulario para editar datos del perfil, alineado a la izquierda */
 .profile-form {
   text-align: left;
 }
 
+/* Grupo de cada campo del formulario con margen inferior */
 .form-group {
   margin-bottom: 1.2rem;
 }
 
+/* Etiquetas de cada campo con fuente, color y separación */
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
@@ -141,6 +156,7 @@
   font-size: 1.1rem;
 }
 
+/* Inputs y selects con ancho completo, padding, borde y fuente definida */
 .form-group input,
 .form-group select {
   width: 100%;
@@ -151,6 +167,7 @@
   font-size: 1rem;
 }
 
+/* Contenedor para botones del formulario (guardar, cancelar), centrados y con espacio entre ellos */
 .form-actions {
   display: flex;
   justify-content: center;
@@ -158,7 +175,7 @@
   margin-top: 1.5rem;
 }
 
-/* Botones principales */
+/* Estilos generales para todos los botones */
 button {
   padding: 0.7rem 1.3rem;
   border: none;
@@ -170,58 +187,71 @@ button {
   transition: all 0.3s ease;
 }
 
+/* Botón editar perfil: color marrón con texto blanco */
 .btn-edit {
   background-color: #A78B7D;
   color: white;
   margin-top: 1rem;
 }
 
+/* Hover para botón editar perfil: tono más oscuro */
 .btn-edit:hover {
   background-color: #8A7163;
 }
 
+/* Botón guardar cambios: verde claro y texto blanco */
 .btn-save {
   background-color: #51CF66;
   color: white;
 }
 
+/* Hover para botón guardar cambios: verde más oscuro */
 .btn-save:hover {
   background-color: #3FAF54;
 }
 
+/* Botón cancelar cambios: rojo claro y texto blanco */
 .btn-cancel {
   background-color: #FF6B6B;
   color: white;
 }
 
+/* Hover para botón cancelar: rojo más oscuro */
 .btn-cancel:hover {
   background-color: #E05555;
 }
 
+/* Estilos responsivos para dispositivos con pantallas menores a 480px */
 @media (max-width: 480px) {
+  /* Reduce padding del contenedor principal */
   .contenido-perfil {
     padding: 1rem;
   }
   
+  /* Reduce padding dentro de la tarjeta */
   .perfil-card {
     padding: 1.5rem;
   }
   
+  /* Cambia el layout de los botones del avatar a columna para móviles */
   .avatar-actions {
     flex-direction: column;
     gap: 0.5rem;
   }
   
+  /* Botones de avatar ocupan todo el ancho */
   .btn-change-avatar,
   .btn-remove-avatar {
     width: 100%;
   }
   
+  /* Botones de acciones del formulario en columna y con menos espacio */
   .form-actions {
     flex-direction: column;
     gap: 0.5rem;
   }
   
+  /* Botones ocupan todo el ancho */
   button {
     width: 100%;
   }

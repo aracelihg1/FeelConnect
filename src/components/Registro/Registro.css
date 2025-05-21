@@ -17,75 +17,84 @@
   16/05/2025
 */
 
+/* Importación de fuentes desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
 
+/* Definición de variables CSS para colores y estilos recurrentes */
 :root {
-  --primary-color: #A78B7D;
-  --secondary-color: #D4B8A7;
-  --accent-color: #E8B4B8;
-  --dark-accent: #C97B84;
-  --text-color: #5A4A42;
-  --light-text: #F8F1E9;
-  --bg-blur: rgba(248, 241, 233, 0.7);
-  --box-shadow: 0 8px 32px rgba(90, 74, 66, 0.1);
-  --warm-gray: #D9CEC4;
+  --primary-color: #A78B7D;          /* Color principal del tema */
+  --secondary-color: #D4B8A7;        /* Color secundario para estados deshabilitados, etc. */
+  --accent-color: #E8B4B8;           /* Color de acento para bordes y focos */
+  --dark-accent: #C97B84;            /* Color oscuro para iconos o textos destacados */
+  --text-color: #5A4A42;             /* Color principal de texto */
+  --light-text: #F8F1E9;             /* Color de texto claro para fondos oscuros */
+  --bg-blur: rgba(248, 241, 233, 0.7); /* Fondo semitransparente con efecto blur */
+  --box-shadow: 0 8px 32px rgba(90, 74, 66, 0.1); /* Sombra suave para cajas */
+  --warm-gray: #D9CEC4;              /* Gris cálido para bordes */
 }
 
+/* Reseteo básico para eliminar márgenes y paddings, y establecer box-sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Estilos base del body: fuente, color y tamaño */
 body {
   font-family: 'Inter', sans-serif;
   color: var(--text-color);
-  overflow: hidden;
-  height: 100vh;
+  overflow: hidden;    /* Evita scroll vertical general */
+  height: 100vh;       /* Ocupa toda la altura visible */
 }
 
+/* Contenedor principal que centra el formulario en pantalla con un fondo degradado */
 .register-container {
   position: relative;
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
   background: linear-gradient(135deg, #F3E9E0 0%, #E8D5C5 100%);
   padding: 1rem;
 }
 
+/* Contenedor de fondo, para posibles elementos decorativos detrás del formulario */
 .background-container {
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: 0;
+  z-index: 0;  /* Debajo del contenido principal */
 }
 
+/* Caja principal del formulario, con fondo semi-transparente y blur */
 .register-box {
   position: relative;
-  z-index: 1;
+  z-index: 1;          /* Sobre el fondo */
   width: 95%;
-  max-width: 550px;
+  max-width: 550px;    /* Tamaño máximo */
   padding: 2rem;
   background: var(--bg-blur);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 16px;
-  box-shadow: var(--box-shadow);
-  border: 1px solid var(--warm-gray);
-  animation: fadeIn 1s ease-in-out;
+  backdrop-filter: blur(8px);          /* Efecto blur para el fondo */
+  -webkit-backdrop-filter: blur(8px);  /* Soporte para Safari */
+  border-radius: 16px;                 /* Bordes redondeados */
+  box-shadow: var(--box-shadow);       /* Sombra suave */
+  border: 1px solid var(--warm-gray);  /* Borde tenue */
+  animation: fadeIn 1s ease-in-out;    /* Animación de aparición */
   transition: all 0.3s ease;
   margin: 1rem auto;
-  overflow-y: auto;
-  max-height: 95vh;
+  overflow-y: auto;                    /* Scroll vertical si el contenido excede */
+  max-height: 95vh;                    /* Limita la altura máxima */
 }
 
+/* Clase para animar un "shake" al formulario (por ejemplo, en error de validación) */
 .register-box.shake {
   animation: shake 0.5s ease-in-out;
 }
 
+/* Contenedor para el logo y texto, centrado verticalmente */
 .logo-container {
   display: flex;
   flex-direction: column;
@@ -93,6 +102,7 @@ body {
   margin-bottom: 1rem;
 }
 
+/* Icono del logo con animación de pulsar */
 .logo-icon {
   font-size: 2.8rem;
   color: var(--dark-accent);
@@ -100,6 +110,7 @@ body {
   animation: pulse 2s infinite;
 }
 
+/* Texto del logo con fuente decorativa y color principal */
 .logo-text {
   font-family: 'Winky Rough', cursive;
   font-size: 2.2rem;
@@ -109,6 +120,7 @@ body {
   margin: 0;
 }
 
+/* Eslogan o texto descriptivo debajo del logo */
 .slogan {
   font-family: 'Inter', sans-serif;
   text-align: center;
@@ -118,12 +130,14 @@ body {
   font-size: 1rem;
 }
 
+/* Formulario con layout en columna y espacio entre campos */
 .register-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+/* Grupo de input que contiene icono y campo, para posicionarlos */
 .input-group {
   position: relative;
   display: flex;
@@ -131,6 +145,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
+/* Icono posicionado dentro del input a la izquierda */
 .input-icon {
   position: absolute;
   left: 15px;
@@ -138,18 +153,20 @@ body {
   font-size: 1.1rem;
 }
 
+/* Estilos del campo input */
 .register-input {
   width: 100%;
-  padding: 12px 12px 12px 40px;
+  padding: 12px 12px 12px 40px; /* Padding izquierdo para dejar espacio al icono */
   border: 1px solid var(--warm-gray);
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.8);
+  border-radius: 30px;          /* Bordes redondeados */
+  background: rgba(255, 255, 255, 0.8);  /* Fondo semi-transparente */
   font-size: 1rem;
   color: var(--text-color);
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(90, 74, 66, 0.05);
 }
 
+/* Estilo cuando el input está enfocado */
 .register-input:focus {
   outline: none;
   border-color: var(--accent-color);
@@ -157,6 +174,7 @@ body {
   box-shadow: 0 4px 12px rgba(168, 123, 125, 0.15);
 }
 
+/* Botón para mostrar/ocultar la contraseña, posicionado a la derecha */
 .password-toggle {
   position: absolute;
   right: 10px;
@@ -170,6 +188,7 @@ body {
   justify-content: center;
 }
 
+/* Botón de registro principal */
 .register-button {
   padding: 14px;
   border: none;
@@ -183,15 +202,18 @@ body {
   margin-top: 0.5rem;
 }
 
+/* Estado deshabilitado del botón (por ejemplo, mientras se procesa el registro) */
 .register-button:disabled {
   background: var(--secondary-color);
 }
 
+/* Estado "loading" del botón para evitar clicks múltiples */
 .register-button.loading {
   background: var(--primary-color);
   cursor: not-allowed;
 }
 
+/* Spinner animado para mostrar carga dentro del botón */
 .spinner {
   width: 1.1rem;
   height: 1.1rem;
@@ -201,12 +223,14 @@ body {
   animation: spin 1s linear infinite;
 }
 
+/* Contenedor para links como "¿Ya tienes cuenta? Inicia sesión" */
 .links-container {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
 
+/* Estilo de los links, con color principal */
 .link {
   text-decoration: none;
   color: var(--primary-color);
@@ -214,6 +238,7 @@ body {
   text-align: center;
 }
 
+/* Animación para efecto "shake" (movimiento horizontal rápido) */
 @keyframes shake {
   0%, 100% {
     transform: translateX(0);
@@ -226,6 +251,7 @@ body {
   }
 }
 
+/* Animación de aparición suave desde arriba con opacidad */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -237,6 +263,7 @@ body {
   }
 }
 
+/* Animación de pulso (crecimiento y reducción continua) */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -249,6 +276,7 @@ body {
   }
 }
 
+/* Animación de giro para el spinner */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -258,31 +286,32 @@ body {
   }
 }
 
+/* Media queries para pantallas pequeñas (móviles y tablets) */
 @media (max-width: 768px) {
   .register-box {
     width: 98%;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem; /* Reduce padding para más espacio */
   }
   
   .logo-icon {
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* Icono un poco más pequeño */
   }
   
   .logo-text {
-    font-size: 2rem;
+    font-size: 2rem;   /* Texto del logo más pequeño */
   }
   
   .register-input {
-    padding: 10px 10px 10px 36px;
-    font-size: 0.95rem;
+    padding: 10px 10px 10px 36px; /* Ajusta padding para iconos */
+    font-size: 0.95rem;            /* Fuente un poco más pequeña */
   }
   
   .input-icon {
-    font-size: 1rem;
-    left: 12px;
+    font-size: 1rem;  /* Iconos más pequeños */
+    left: 12px;       /* Ajusta posición */
   }
   
   .password-toggle {
-    font-size: 1rem;
+    font-size: 1rem;  /* Botón de toggle más pequeño */
   }
 }

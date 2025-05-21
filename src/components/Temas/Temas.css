@@ -20,6 +20,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Winky+Rough&display=swap');
 
+/* Variables de color para mantener consistencia */
 :root {
   --primary: #5A4A42;
   --secondary: #A78B7D;
@@ -28,6 +29,7 @@
   --white: #FFFFFF;
 }
 
+/* Contenedor principal del componente */
 .temas-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -36,6 +38,7 @@
   color: var(--primary);
 }
 
+/* Título principal con fuente decorativa y centrado */
 .titulo-principal {
   font-family: 'Winky Rough', cursive;
   font-size: 2.5rem;
@@ -44,6 +47,7 @@
   margin-bottom: 0.5rem;
 }
 
+/* Subtítulo centrado y con color secundario */
 .subtitulo {
   text-align: center;
   color: var(--secondary);
@@ -51,12 +55,14 @@
   margin-bottom: 3rem;
 }
 
+/* Contenedor para categorías con separación vertical */
 .categorias-container {
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
 
+/* Estilo común para títulos de categorías */
 .titulo-categoria {
   font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
@@ -64,32 +70,19 @@
   padding: 0.8rem 1.2rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
-}
-
-.titulo-categoria.positivo {
-  background-color: #F0D9D9;
+  background-color: #F0D9D9; /* Fondo suave para todas las categorías */
   color: var(--primary);
   text-align: center;
 }
 
-.titulo-categoria.negativo {
-  background-color: #F0D9D9;
-  color: var(--primary);
-  text-align: center;
-}
-
-.titulo-categoria.sensible {
-  background-color: #F0D9D9;
-  color: var(--primary);
-  text-align: center;
-}
-
+/* Grid responsivo para las tarjetas de temas */
 .temas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
+/* Estilo para cada tarjeta de tema */
 .tema-card {
   background: var(--white);
   border-radius: 10px;
@@ -99,11 +92,13 @@
   border-top: 4px solid var(--accent);
 }
 
+/* Efecto hover para destacar la tarjeta */
 .tema-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(90, 74, 66, 0.12);
 }
 
+/* Título dentro de la tarjeta con color especial */
 .tema-card h3 {
   color: #C97B84;
   font-size: 1.3rem;
@@ -111,18 +106,21 @@
   margin-bottom: 1rem;
 }
 
+/* Descripción dentro de la tarjeta */
 .tema-card p {
   color: var(--primary);
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
+/* Contenedor para recursos relacionados */
 .recursos-container {
   background: var(--light-bg);
   padding: 1rem;
   border-radius: 8px;
 }
 
+/* Título de sección recursos */
 .recursos-container h4 {
   color: var(--secondary);
   font-size: 1rem;
@@ -130,24 +128,28 @@
   margin-bottom: 0.8rem;
 }
 
+/* Lista sin estilo predeterminado */
 .recursos-container ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+/* Estilo para cada recurso en la lista */
 .recursos-container li {
   margin-bottom: 0.8rem;
   padding-bottom: 0.8rem;
   border-bottom: 1px dashed var(--accent);
 }
 
+/* Elimina el borde y margen en el último recurso */
 .recursos-container li:last-child {
   margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: none;
 }
 
+/* Enlaces para recursos con transición y cambio de color */
 .recurso-link {
   color: var(--primary);
   text-decoration: none;
@@ -160,6 +162,7 @@
   color: #C97B84;
 }
 
+/* Título para sección equipo (si se usa en algún lado) */
 .equipo-section h2 {
   font-family: var(--font-decorative);
   font-size: 2.5rem; 
@@ -167,11 +170,14 @@
   margin-bottom: 2rem; 
 }
 
+/* Ajustes responsivos para pantallas pequeñas */
 @media (max-width: 768px) {
+  /* Una columna para grid en móviles */
   .temas-grid {
     grid-template-columns: 1fr;
   }
   
+  /* Reduce tamaño del título principal en móvil */
   .titulo-principal {
     font-size: 2rem;
   }

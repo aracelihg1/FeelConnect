@@ -18,9 +18,11 @@
 */
 
 import React from 'react';
-import './Temas.css';
+import './Temas.css'; // Importación de los estilos específicos para este componente
 
+// Componente funcional Temas
 const Temas = () => {
+  // Definición del arreglo de categorías con temas emocionales y recursos asociados
   const categorias = [
     {
       nombre: 'Emociones positivas',
@@ -224,25 +226,38 @@ const Temas = () => {
   ];
 
   return (
+    // Contenedor principal de la página de temas
     <div className="temas-container">
+      {/* Título principal de la sección */}
       <h1 className="titulo-principal">Temas de Apoyo</h1>
+      
+      {/* Subtítulo que describe el propósito de la sección */}
       <p className="subtitulo">Recursos profesionales para tu bienestar emocional</p>
       
+      {/* Contenedor que agrupa todas las categorías */}
       <div className="categorias-container">
         {categorias.map((categoria, index) => (
+          // Cada categoría se renderiza como una sección independiente
           <div key={index} className="categoria">
+            {/* Título de la categoría, con clase dinámica según su tipo */}
             <h2 className={`titulo-categoria ${categoria.tipo}`}>{categoria.nombre}</h2>
+            
+            {/* Contenedor de tarjetas de temas dentro de la categoría */}
             <div className="temas-grid">
               {categoria.temas.map((tema, i) => (
                 <div key={i} className="tema-card">
+                  {/* Nombre del tema */}
                   <h3>{tema.nombre}</h3>
+                  {/* Breve descripción del tema */}
                   <p>{tema.descripcion}</p>
-                  
+
+                  {/* Contenedor de recursos relacionados */}
                   <div className="recursos-container">
                     <h4>Recursos:</h4>
                     <ul>
                       {tema.recursos.map((recurso, j) => (
                         <li key={j}>
+                          {/* Enlace al recurso externo */}
                           <a 
                             href={recurso.url} 
                             target="_blank" 

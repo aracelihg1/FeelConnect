@@ -18,29 +18,32 @@ Fecha de entrega:
 16/05/2025
 */
 
-
+/* Importa las fuentes desde Google Fonts: Inter para el texto general y Winky Rough para los títulos decorativos */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Winky+Rough:wght@400;600&display=swap');
 
+/* Variables de color y sombra que se reutilizan en todo el diseño */
 :root {
-  --primary: #5A4A42;
-  --secondary: #A78B7D;
-  --accent: #C97B84;
-  --light: #F8F1E9;
-  --bg-card: #FFFFFF;
-  --warm-gray: #D9CEC4;
-  --shadow: 0 4px 12px rgba(90, 74, 66, 0.1);
+  --primary: #5A4A42;         /* Color principal: marrón oscuro */
+  --secondary: #A78B7D;       /* Color secundario: beige rosado */
+  --accent: #C97B84;          /* Color de acento: rosado fuerte */
+  --light: #F8F1E9;           /* Fondo claro para contraste */
+  --bg-card: #FFFFFF;         /* Fondo de tarjetas */
+  --warm-gray: #D9CEC4;       /* Gris cálido */
+  --shadow: 0 4px 12px rgba(90, 74, 66, 0.1); /* Sombra suave */
 }
 
+/* Estilos generales del documento HTML y cuerpo */
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
   overflow: auto;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #F3E9E0 0%, #E8D5C5 100%);
-  color: var(--primary);
+  background: linear-gradient(135deg, #F3E9E0 0%, #E8D5C5 100%); /* Fondo degradado */
+  color: var(--primary); /* Texto principal */
 }
 
+/* Contenedor principal de la vista */
 .contenido-principal {
   min-height: 100vh;
   display: flex;
@@ -48,6 +51,7 @@ html, body, #root {
   overflow: visible;
 }
 
+/* Contenedor interno con límite de ancho y padding */
 .content-wrapper {
   width: 100%;
   max-width: 1200px;
@@ -59,23 +63,20 @@ html, body, #root {
   overflow-y: auto;
 }
 
+/* Contenedor del dashboard con disposición en fila */
 .dashboard-container {
   display: flex;
   gap: 2rem;
   width: 100%;
 }
 
-.calendar-panel {
+/* Paneles para calendario y emociones con tamaño mínimo */
+.calendar-panel, .emotion-panel {
   flex: 1;
   min-width: 350px;
 }
 
-.emotion-panel {
-  flex: 1;
-  min-width: 350px;
-}
-
-/* Títulos */
+/* Estilo del título de bienvenida */
 .welcome-title {
   font-family: 'Winky Rough', cursive;
   font-size: 2.5rem;
@@ -85,7 +86,7 @@ html, body, #root {
   text-shadow: 1px 1px 2px rgba(90, 74, 66, 0.1);
 }
 
-/* Tarjeta principal */
+/* Estilo de la tarjeta blanca que contiene el contenido */
 .principal-card {
   background: var(--bg-card);
   border-radius: 20px;
@@ -96,7 +97,7 @@ html, body, #root {
   overflow: hidden;
 }
 
-/* Mensaje del día */
+/* Frase motivacional o mensaje del día */
 .daily-affirmation {
   background: rgba(168, 139, 125, 0.1);
   padding: 1.5rem;
@@ -108,6 +109,7 @@ html, body, #root {
   position: relative;
 }
 
+/* Comillas decorativas para la afirmación */
 .daily-affirmation::before,
 .daily-affirmation::after {
   content: '"';
@@ -116,17 +118,16 @@ html, body, #root {
   position: absolute;
   opacity: 0.3;
 }
-
 .daily-affirmation::before {
   top: 5px;
   left: 10px;
 }
-
 .daily-affirmation::after {
   bottom: -15px;
   right: 10px;
 }
 
+/* Contenedor de botones emocionales */
 .emotion-selector {
   display: flex;
   flex-wrap: wrap;
@@ -135,6 +136,7 @@ html, body, #root {
   margin: 1.5rem 0;
 }
 
+/* Botones para seleccionar emociones */
 .emotion-btn {
   border: none;
   border-radius: 30px;
@@ -150,26 +152,29 @@ html, body, #root {
   box-shadow: var(--shadow);
 }
 
+/* Efecto al pasar el mouse por encima */
 .emotion-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+/* Botón seleccionado: se escala ligeramente y se resalta */
 .emotion-btn.selected {
   transform: scale(1.05);
   box-shadow: 0 0 0 3px var(--light);
 }
 
+/* Sección para elegir la intensidad de la emoción */
 .level-selector {
   margin: 1.5rem 0;
   text-align: center;
 }
-
 .level-selector p {
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
 
+/* Barras que representan niveles de emoción */
 .level-bars {
   display: flex;
   justify-content: center;
@@ -178,6 +183,7 @@ html, body, #root {
   align-items: flex-end;
 }
 
+/* Cada barra individual */
 .level-bar {
   width: 30px;
   border-radius: 5px 5px 0 0;
@@ -188,15 +194,16 @@ html, body, #root {
 .level-bar:hover {
   transform: translateY(-3px);
 }
-
 .level-bar.active {
   opacity: 1 !important;
 }
 
+/* Sección del diario emocional */
 .journal-section {
   margin: 1.5rem 0;
 }
 
+/* Cuadro de texto para escribir en el diario */
 .journal-input {
   width: 100%;
   min-height: 120px;
@@ -214,6 +221,7 @@ html, body, #root {
   box-shadow: 0 0 0 3px rgba(201, 123, 132, 0.2);
 }
 
+/* Botón para guardar el diario */
 .save-button {
   width: 100%;
   padding: 12px;
@@ -233,6 +241,7 @@ html, body, #root {
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+/* Panel del calendario */
 .calendar-panel {
   background: var(--bg-card);
   border-radius: 20px;
@@ -241,6 +250,7 @@ html, body, #root {
   height: fit-content;
 }
 
+/* Encabezado del calendario con botones de navegación */
 .calendar-header {
   display: flex;
   justify-content: space-between;
@@ -269,12 +279,14 @@ html, body, #root {
   font-size: 1.3rem;
 }
 
+/* Grilla de días del calendario */
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0.5rem;
 }
 
+/* Nombres de los días de la semana */
 .calendar-weekday {
   font-weight: 600;
   font-size: 0.9rem;
@@ -283,6 +295,7 @@ html, body, #root {
   padding: 0.5rem 0;
 }
 
+/* Estilo de cada día en la cuadrícula */
 .calendar-day {
   position: relative;
   height: 40px;
@@ -298,10 +311,12 @@ html, body, #root {
   background: var(--light);
 }
 
+/* Día actual resaltado */
 .calendar-day.today {
   font-weight: 700;
 }
 
+/* Ícono de check (día con entrada en diario) */
 .checkmark {
   position: absolute;
   bottom: 2px;
@@ -317,6 +332,7 @@ html, body, #root {
   font-size: 0.7rem;
 }
 
+/* Puntos decorativos para marcar el día actual */
 .today-marker {
   position: absolute;
   top: 2px;
@@ -327,6 +343,7 @@ html, body, #root {
   background: var(--primary);
 }
 
+/* Leyenda que explica los íconos o colores del calendario */
 .calendar-legend {
   display: flex;
   justify-content: center;
@@ -341,34 +358,36 @@ html, body, #root {
   gap: 0.5rem;
 }
 
+/* Estilos responsivos para pantallas menores a 900px */
 @media (max-width: 900px) {
   .dashboard-container {
     flex-direction: column;
   }
-  
+
   .calendar-panel, .emotion-panel {
     min-width: 100%;
   }
 }
 
+/* Estilos para pantallas muy pequeñas (celulares) */
 @media (max-width: 480px) {
   .content-wrapper {
     padding: 1rem;
   }
-  
+
   .welcome-title {
     font-size: 2rem;
   }
-  
+
   .principal-card, .calendar-panel {
     padding: 1.5rem;
   }
-  
+
   .emotion-btn {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
   }
-  
+
   .calendar-day {
     height: 35px;
     font-size: 0.9rem;
